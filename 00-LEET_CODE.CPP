@@ -23,6 +23,25 @@ int main(){
     cout<<"Subtract the product ands sum of digit : "<<subtract<<endl;
 }
 */
+//in leetCode
+/*
+class Solution {
+public:
+    int subtractProductAndSum(int n) {
+        int product  = 1;
+        int sum = 0;
+        while(n != 0){
+            int digit = n % 10;
+            product = product * digit;
+            sum = sum + digit;
+
+            n = n/10;
+        }
+        int sub = product - sum;
+        return sub;
+    }
+};
+*/
 /*OUTPUT
 Enter the value of n :
 25
@@ -46,8 +65,23 @@ int main(){
     cout<<"number of 1 bits in n : " <<count;
 }
 */
-/*OUTPUT WRONG
-(expected)
+//in leet code
+/*
+class Solution {
+public:
+    int hammingWeight(uint32_t n) {
+        int count= 0;
+        while(n != 0){
+            if(n & 1){
+                count++;
+            }
+            n = n>>1;
+        }
+        return count;
+    }
+};
+*/
+/*OUTPUT
 Enter the value of n :
 11111000000
 number of 1 bits in n :
@@ -94,6 +128,24 @@ int main(){
     }
     cout<<"Reverse of integer : "<<ans<<endl;
 }
+*/
+//in leet code
+/*
+class Solution {
+public:
+    int reverse(int x) {
+        int ans = 0;
+        while(x != 0){
+            int digit = x % 10;
+            if(ans > INT_MAX/10 || ans < INT_MIN/10){
+                return 0;
+            }
+            ans = (ans * 10) + digit;
+            x = x/10;
+        }
+        return ans;
+    }
+};
 */
 /*OUTPUT
 Enter the valueo of n :
