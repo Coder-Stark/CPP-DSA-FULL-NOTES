@@ -272,3 +272,248 @@ The level order traversal or DFS :
 3 5
 7 11 17
 */
+
+
+//COUNT LEAF NODES
+template <typename T>
+class BinaryTreeNode {
+  public :
+    T data;
+    BinaryTreeNode<T> *left;
+    BinaryTreeNode<T> *right;
+
+    BinaryTreeNode(T data) {
+            this -> data = data;
+            left = NULL;
+            right = NULL;
+    }
+};
+    
+//main code
+void inorder(BinaryTreeNode<int> *root, int &count){
+    //base case
+    if(root == NULL){
+        return;
+    }
+
+    inorder(root->left, count);
+
+    //leafnode
+    if(root->left == NULL && root->right == NULL){
+        count++;
+    }
+
+    inorder(root->right, count);
+}
+
+int noOfLeafNodes(BinaryTreeNode<int> *root){
+    int count = 0;
+    inorder(root, count);
+    
+    return count;
+}
+/*
+Sample Input 1:
+3
+1 -1 -1
+1  2  3  -1 -1 -1 4 -1 -1
+1  2 -1 -1 3 -1 4 -1 -1
+Sample Output 1:
+1
+2
+1
+*/
+
+//FOR ALL BELOW
+struct Node
+{
+    int data;
+    struct Node* left;
+    struct Node* right;
+    
+    Node(int x){
+        data = x;
+        left = right = NULL;
+    }
+};
+
+//HEIGHT OF BINARY TREE                       (T.C = O(N), S.C = O(N))
+class Solution{
+    public:
+    //Function to find the height of a binary tree.
+    int height(struct Node* node){
+        //base case
+        if(node == NULL){
+            return 0;
+        }
+        
+        int left = height(node->left);
+        int right = height(node->right);
+        
+        int ans = max(left , right) + 1;
+        
+        return ans;
+    }
+};
+/*
+Input:
+     1
+    /  \
+   2    3
+Output: 2
+*/
+
+
+//DIAMETER OF BINARY TREE                     (T.C = O(N^2), S.C = O(N))
+class Solution {
+  private:
+    int height(Node* node){
+        //base case
+        if(node == NULL){
+            return 0;
+        }
+        
+        int left = height(node->left);
+        int right = height(node->right);
+        
+        int ans = max(left, right) + 1;
+        
+        return ans;
+    }
+  public:
+    // Function to return the diameter of a Binary Tree.
+    int diameter(Node* root) {
+        //base case
+        if(root == NULL){
+            return 0;
+        }
+        
+        int op1 = diameter(root->left);
+        int op2 = diameter(root->right);
+        int op3 = height(root->left) + height(root->right) + 1;
+        
+        int ans = max(op1,max(op2, op3));
+        
+        return ans;
+    }
+};
+//Alternate solution                              (T.C = O(N))
+class Solution {
+
+  public:
+    // Function to return the diameter of a Binary Tree.
+    pair<int,int>diameterFast(Node* root){
+        //base case
+        if(root == NULL){
+            pair<int,int>p = make_pair(0,0);
+            return p;
+        }
+        pair<int,int>left = diameterFast(root->left);
+        pair<int,int>right = diameterFast(root->right);
+        
+        int op1 = left.first;
+        int op2 = right.first;
+        int op3 = left.second + right.second + 1;
+        
+        pair<int,int>ans;
+        ans.first = max(op1,max(op2,op3));
+        ans.second = max(left.second, right.second) + 1;
+        
+        return ans;
+    }
+    int diameter(Node* root) {
+        return diameterFast(root).first;
+    }
+};
+/*
+Input:
+         10
+        /   \
+      20    30
+    /   \ 
+   40   60
+Output: 4
+*/
+
+
+//CHECK FOR BALANCED TREE                                         (T.C = O(N^2))
+class Solution{
+    private:
+        int height(Node* node){
+            //base case
+            if(node == NULL){
+                return 0;
+            }
+            
+            int left = height(node->left);
+            int right = height(node->right);
+            
+            int ans = max(left,right) + 1;
+            return ans;
+        }
+    public:
+    //Function to check whether a binary tree is balanced or not.
+    bool isBalanced(Node *root)
+    {
+        //base case
+        if(root == NULL){
+            return true;
+        }
+        
+        bool left = isBalanced(root->left);
+        bool right = isBalanced(root->right);
+        bool diff = abs(height(root->left) - height(root->right)) <= 1;
+        
+        if(left && right && diff){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+};
+//Alternate Solution                                              (T.C = O(N))
+class Solution{
+    public:
+    //Function to check whether a binary tree is balanced or not.
+    pair<bool,int>isBalancedFast(Node *root){
+        //base case
+        if(root ==  NULL){
+            pair<bool,int>p = make_pair(true,0);
+            return p;
+        }
+        
+        pair<bool,int>left = isBalancedFast(root->left);
+        pair<bool,int>right = isBalancedFast(root->right);
+        
+        bool leftAns = left.first;
+        bool rightAns = right.first;
+        bool diff = abs(left.second - right.second) <= 1;
+        
+        pair<bool,int>ans;
+        ans.second = max(left.second,right.second) + 1;
+        
+        if(leftAns && rightAns && diff){
+            ans.first = true;
+        }
+        else{
+            ans.first = false;
+        }
+        return ans;
+    }
+    bool isBalanced(Node *root)
+    {
+        return isBalancedFast(root).first;
+    }
+};
+/*
+Input:
+       10
+     /   \
+    20   30 
+  /   \
+ 40   60
+Output: 1
+*/
+
+
