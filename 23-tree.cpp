@@ -397,7 +397,7 @@ class Solution {
         return ans;
     }
 };
-//Alternate solution                              (T.C = O(N))
+//Alternate solution                                      (T.C = O(N))
 class Solution {
 
   public:
@@ -517,3 +517,359 @@ Output: 1
 */
 
 
+//DETERMINE IF 2 TREE'S ARE IDENTICAL                                (T.C = O(N), S.C = O(H))
+class Solution
+{
+    public:
+    //Function to check if two trees are identical.
+    bool isIdentical(Node *r1, Node *r2)
+    {
+        //base case
+        if(r1 == NULL && r2 == NULL){
+            return true;
+        }
+        if(r1 != NULL && r2 == NULL){
+            return false;
+        }
+        if(r1 == NULL && r2 != NULL){
+            return false;
+        }
+        
+        bool left = isIdentical(r1->left, r2->left);
+        bool right = isIdentical(r1->right, r2->right);
+        bool value = r1->data == r2->data;
+        
+        if(left && right && value ){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+};
+/*
+Input:
+     1          1
+   /   \      /   \
+  2     3    2     3
+Output: Yes
+*/
+
+
+//SUM TREE                                           (T.C = O(N), S.C = O(H))
+class Solution
+{
+    public:
+    pair<bool,int> isSumTreeFast(Node *root){
+        //base case
+        if(root == NULL){
+            pair<bool,int>p = make_pair(true, 0);
+            return p;
+        }
+        
+        //leaf node manage
+        if(root->left == NULL && root->right == NULL){
+            pair<bool,int>p = make_pair(true, root->data);
+            return p;
+        }
+        
+        pair<bool,int>leftAns = isSumTreeFast(root->left);
+        pair<bool,int>rightAns = isSumTreeFast(root->right);
+        
+        
+        bool left = leftAns.first;
+        bool right = rightAns.first;
+        
+        bool cond = root->data == leftAns.second + rightAns.second;
+        
+        pair<bool,int>ans;
+        
+        if(left && right && cond){
+            ans.first = true;
+            ans.second = 2*root->data;
+        }
+        else{
+            ans.first = false;
+        }
+        
+        return ans;
+    }
+    bool isSumTree(Node* root)
+    {
+         return isSumTreeFast(root).first;
+    }
+};
+/*
+Input:
+    3
+  /   \    
+ 1     2
+
+Output: 1
+*/
+
+
+//ZIG ZAG TREE TRAVERSAL                            (T.C = O(N), S.C = O(N))
+class Solution{
+    public:
+    //Function to store the zig zag order traversal of tree in a list.
+    vector <int> zigZagTraversal(Node* root)
+    {
+    	vector<int>result;
+    	//base case
+    	if(root == NULL){
+    	    return result;
+    	}
+    	
+    	bool leftToRight = true;
+    	
+    	queue<Node*>q;
+    	q.push(root);
+    	
+    	while(!q.empty()){
+    	    int size = q.size();
+    	    vector<int>ans(size);
+    	    
+    	    //level process
+    	    for(int i = 0 ; i < size;i++){
+    	        Node *frontNode = q.front();
+    	        q.pop();
+    	        
+    	        //normal insert and reverse insert
+    	        int index = leftToRight ? i : size-i-1;
+    	        ans[index] = frontNode->data;
+    	        
+    	        if(frontNode->left){
+    	            q.push(frontNode->left);
+    	        }
+    	        if(frontNode->right){
+    	            q.push(frontNode->right);
+    	        }
+    	    }
+    	    
+    	    //level direction change
+    	    leftToRight = !leftToRight;
+    	    for(auto i : ans){
+    	        result.push_back(i);
+    	    }
+    	}
+    	return result;
+    }
+};
+/*
+Input:
+        1
+      /   \
+     2     3
+    / \   /  \
+   4   5 6    7
+Output:
+1 3 2 4 5 6 7
+*/
+
+
+//BOUNDARY TRAVERSAL OF BINARY TREE                                       (T.C = O(N), S.C = O(H))
+class Solution {
+public:
+    void traversalLeft(Node *root, vector<int>&ans){
+        //base case
+        if((root == NULL) || (root->left == NULL && root->right == NULL)){
+            return;
+        }
+        ans.push_back(root->data);
+        
+        if(root->left){
+            traversalLeft(root->left, ans);
+        }
+        else{
+            traversalLeft(root->right, ans);
+        }
+    }
+    
+    void traversalLeaf(Node *root, vector<int>&ans){
+        //base case
+        if(root == NULL){
+            return;
+        }
+        
+        if(root->left == NULL && root->right == NULL){
+            ans.push_back(root->data);
+            return;
+        }
+        
+        traversalLeaf(root->left, ans);
+        traversalLeaf(root->right, ans);
+    }
+    
+    void traversalRight(Node *root, vector<int>&ans){
+        //base case
+        if((root == NULL) || (root->left == NULL && root->right == NULL)){
+            return;
+        }
+        
+        if(root->right){
+            traversalRight(root->right, ans);
+        }
+        else{
+            traversalRight(root->left, ans);
+        }
+        
+        //store after returning back / reverse right print
+        ans.push_back(root->data);
+        
+    }
+    
+    vector <int> boundary(Node *root)
+    {
+        vector<int>ans;
+        //base case
+        if(root == NULL){
+            return ans;
+        }
+        
+        ans.push_back(root->data);
+        
+        //left part store/print
+        traversalLeft(root->left, ans);
+        
+        //leaf part stor/print
+        //left subtree leaf part
+        traversalLeaf(root->left, ans);
+        //right subtree leaf part
+        traversalLeaf(root->right, ans);
+        
+        //Right part store/print
+        traversalRight(root->right, ans);
+        
+        return ans;
+    }
+};
+/*
+Input:
+        1 
+      /   \
+     2     3  
+    / \   / \ 
+   4   5 6   7
+      / \
+     8   9
+   
+Output: 1 2 4 8 9 6 7 3
+*/
+
+
+//VERTICAL TRAVERSAL OF BINARY TREE                                 (T.C = O(N), S.C = O(N))
+#include<map>
+class Solution
+{
+    public:
+    //Function to find the vertical order traversal of Binary Tree.
+    vector<int> verticalOrder(Node *root)
+    {
+        map<int,map<int,vector<int> > > nodes;
+        queue<pair<Node*,pair<int,int> > > q;
+        vector<int>ans;
+        
+        //base case
+        if(root == NULL){
+            return ans;
+        }
+        q.push(make_pair(root, make_pair(0, 0)));
+        
+        while(!q.empty()){
+            pair<Node*,pair<int,int>>temp = q.front();
+            q.pop();
+            
+            //extract values
+            Node* frontNode = temp.first;
+            int hd = temp.second.first;
+            int lvl = temp.second.second;
+            
+            nodes[hd][lvl].push_back(frontNode->data);
+            
+            if(frontNode->left){
+                q.push(make_pair(frontNode->left,make_pair(hd-1, lvl+1)));
+            }
+            if(frontNode->right){
+                q.push(make_pair(frontNode->right,make_pair(hd+1, lvl+1)));
+            }
+        }
+        for(auto i : nodes){
+            for(auto j : i.second){
+                for(auto k: j.second){
+                    ans.push_back(k);
+                }
+            }
+        }
+        return ans;
+    }
+};
+/*
+Input:
+           1
+         /   \
+       2       3
+     /   \   /   \
+   4      5 6      7
+              \      \
+               8      9           
+Output: 
+4 2 1 5 6 3 8 7 9 
+*/
+
+
+//TOP VIEW OF BINARY TREE                                               (T.C = O(NLOGN), S.C = O(N))
+class Solution
+{
+    public:
+    //Function to return a list of nodes visible from the top view 
+    //from left to right in Binary Tree.
+    vector<int> topView(Node *root)
+    {
+        vector<int>ans;
+        //base case
+        if(root == NULL){
+            return ans;
+        }
+        
+        map<int,int>topNode;
+        queue<pair<Node*,int> >q;
+        
+        q.push(make_pair(root, 0));
+        
+        while(!q.empty()){
+            pair<Node*, int>temp = q.front();
+            q.pop();
+            
+            Node* frontNode = temp.first;
+            int hd = temp.second;
+            
+            //maintain 1:1 mapping
+            if(topNode.find(hd) == topNode.end()){
+                topNode[hd] = frontNode->data;
+            }
+            
+            if(frontNode->left){
+                q.push(make_pair(frontNode->left, hd-1));
+            }
+            
+            if(frontNode->right){
+                q.push(make_pair(frontNode->right, hd+1));
+            }
+        }
+        for(auto i: topNode){
+            ans.push_back(i.second);
+        }
+        return ans;
+    }
+
+};
+/*
+Input:
+       10
+    /      \
+  20        30
+ /   \    /    \
+40   60  90    100
+Output: 40 20 10 30 100
+*/
