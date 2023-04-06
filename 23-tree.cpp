@@ -873,3 +873,394 @@ Input:
 40   60  90    100
 Output: 40 20 10 30 100
 */
+
+
+//BOTTOM VIEW OF BINARY TREE                                             (T.C = O(NLOGN), S.C = O(N))
+class Solution {
+  public:
+    vector <int> bottomView(Node *root) {
+         vector<int>ans;
+        //base case
+        if(root == NULL){
+            return ans;
+        }
+        
+        map<int,int>topNode;
+        queue<pair<Node*,int> >q;
+        
+        q.push(make_pair(root, 0));
+        
+        while(!q.empty()){
+            pair<Node*, int>temp = q.front();
+            q.pop();
+            
+            Node* frontNode = temp.first;
+            int hd = temp.second;
+            
+            //maintain 1:1 mapping
+            // if(topNode.find(hd) == topNode.end()) only for top view
+            topNode[hd] = frontNode->data;
+            
+            if(frontNode->left){
+                q.push(make_pair(frontNode->left, hd-1));
+            }
+            
+            if(frontNode->right){
+                q.push(make_pair(frontNode->right, hd+1));
+            }
+        }
+        for(auto i: topNode){
+            ans.push_back(i.second);
+        }
+        return ans;
+    }
+};
+/*
+Input:
+         10
+       /    \
+      20    30
+     /  \
+    40   60
+Output: 40 20 60 30
+*/
+
+
+//LEFT VIEW OF BINARY TREE                                              (T.C = O(N), S.C = O(H))       
+void solve(Node *root, vector<int>&ans , int level){
+    //base case
+    if(root == NULL){
+        return;
+    }
+    
+    //we entered into new level
+    if(level == ans.size()){
+        ans.push_back(root->data);
+    }
+    
+    solve(root->left, ans, level+1);
+    solve(root->right, ans, level+1);
+}
+vector<int> leftView(Node *root)
+{
+   vector<int>ans;
+   solve(root, ans, 0);
+   return ans;
+}
+/*
+Input:
+   1
+ /  \
+3    2
+Output: 1 3
+*/
+
+
+//RIGHT VIEW OF BINARY TREE                                              (T.C = O(N), S.C = O(N))       
+class Solution
+{
+    public:
+    
+    void solve(Node *root, vector<int>&ans , int level){
+    //base case
+    if(root == NULL){
+        return;
+    }
+    
+    //we entered into new level
+    if(level == ans.size()){
+        ans.push_back(root->data);
+    }
+    
+    solve(root->right, ans, level+1);
+    solve(root->left, ans, level+1);
+    
+}
+    //Function to return list containing elements of right view of binary tree.
+    vector<int> rightView(Node *root)
+    {
+       vector<int>ans;
+       solve(root, ans, 0);
+       return ans;
+    }
+};
+/*
+Input:
+     10
+    /   \
+  20     30
+ /   \
+40  60 
+Output: 10 30 60
+*/
+
+
+//SUM OF THE LONGEST BLODDLINE OF A TREE / OR                              (T.C = O(N), S.C = O(N))   
+// SUM OF NODES ON THE LONGEST PATH FROM ROOT TO LEAF NODE    
+class Solution
+{
+public:
+    void solve(Node* root, int sum, int&maxSum, int len, int&maxLen){
+        //base case
+        if(root == NULL){
+            if(len > maxLen){
+                maxLen = len;
+                maxSum = sum;
+            }
+            else if(len == maxLen){
+                maxSum = max(maxSum, sum);
+            }
+            return;
+        }
+        
+        sum = sum + root->data;
+        solve(root->left, sum, maxSum, len+1, maxLen);
+        solve(root->right, sum, maxSum, len+1, maxLen);
+    }
+    int sumOfLongRootToLeafPath(Node *root)
+    {
+        int len = 0;
+        int maxLen = 0;
+        int sum = 0;
+        int maxSum = 0;
+        
+        solve(root, sum, maxSum, len, maxLen);
+        return maxSum;
+    }
+};
+/*
+Input: 
+        4        
+       / \       
+      2   5      
+     / \ / \     
+    7  1 2  3    
+      /
+     6
+Output: 13
+*/
+
+
+//LOWEST COMMON ANCESTOR IN A BINARY TREE                        (T.C = O(N), S.C = O(H))               
+class Solution
+{
+    public:
+    //Function to return the lowest common ancestor in a Binary Tree.
+    Node* lca(Node* root ,int n1 ,int n2 )
+    {
+       //base case
+       if(root == NULL){
+           return NULL;
+       }
+       if(root->data == n1 || root->data == n2){
+           return root;
+       }
+       
+       Node *leftAns = lca(root->left, n1, n2);
+       Node *rightAns = lca(root->right, n1, n2);
+       
+       if(leftAns != NULL && rightAns != NULL){
+           return root;
+       }
+       else if(leftAns != NULL && rightAns == NULL){
+           return leftAns;
+       }
+       else if(leftAns == NULL && rightAns != NULL){
+           return rightAns;
+       }
+       else{
+           return NULL;
+       }
+    }
+};
+/*
+Input:
+n1 = 3 , n2 = 4
+           5    
+          /    
+         2  
+        / \  
+       3   4
+Output: 2
+*/
+
+
+//K SUM PATHS                                                               (T.C = O(N^2))  
+class Solution{
+  public:
+    void solve(Node *root, int k, int&count, vector<int>&path){
+        //base case
+        if(root == NULL){
+            return;
+        }
+        
+        path.push_back(root->data);
+        
+        solve(root->left, k, count, path);
+        solve(root->right, k, count, path);
+        
+        //check k sum
+        int size = path.size();
+        int sum = 0;
+        for(int i = size-1 ; i >=0 ; i--){
+            sum += path[i];
+            if(sum == k){
+                count++;
+            }
+        }
+        path.pop_back();
+    }
+    int sumK(Node *root,int k)
+    {
+        vector<int>path;
+        int count = 0;
+        solve(root, k, count, path);
+        return count;
+    }
+};
+/*
+Input: 
+Tree = 
+           1
+        /     \
+      3        -1
+    /   \     /   \
+   2     1   4     5                        
+        /   / \     \                    
+       1   1   2     6    
+K = 5                    
+Output: 8
+*/
+//ALTERNATIVE                                  (T.C = O(N), S.C = O(H))
+#include <unordered_map>
+class Solution{
+public:
+    void solve(Node *root, int k, int &count, unordered_map<int, int> &sumMap, int runningSum){
+        if(root == NULL){
+            return;
+        }
+        
+        runningSum += root->data;
+        
+        if(sumMap.find(runningSum - k) != sumMap.end()){
+            count += sumMap[runningSum - k];
+        }
+        
+        if(sumMap.find(runningSum) == sumMap.end()){
+            sumMap[runningSum] = 1;
+        }
+        else{
+            sumMap[runningSum]++;
+        }
+        
+        solve(root->left, k, count, sumMap, runningSum);
+        solve(root->right, k, count, sumMap, runningSum);
+        
+        sumMap[runningSum]--;
+    }
+    
+    int sumK(Node *root,int k){
+        unordered_map<int, int> sumMap;
+        sumMap[0] = 1;
+        int count = 0;
+        solve(root, k, count, sumMap, 0);
+        return count;
+    }
+};
+
+
+//KTH ANCESTOR IN A TREE                                                (T.C = O(N), S.C = O(N))
+#include<climits>
+Node *solve(Node *root, int&k , int&node){
+    //base case
+    if(root == NULL){
+        return NULL;
+    }
+    if(root->data == node){
+        return root;
+    }
+    
+    Node *leftAns = solve(root->left, k, node);
+    Node *rightAns = solve(root->right, k, node);
+    
+    //return back to upward
+    if(leftAns != NULL && rightAns == NULL){
+        k--;
+        if(k <= 0){
+            //answer lock
+            k = INT_MAX;
+            return root;
+        }
+        return leftAns;
+    }
+    if(leftAns == NULL && rightAns != NULL){
+        k--;
+        if(k <= 0){
+            //answer lock
+            k = INT_MAX;
+            return root;
+        }
+        return rightAns;
+    }
+    return NULL;
+}
+int kthAncestor(Node *root, int k, int node)
+{
+    Node *ans = solve(root, k, node);
+    if(ans == NULL || ans->data == node){
+        return -1;
+    }
+    else{
+        return ans->data;
+    }
+}
+/*
+Input:
+k=1 
+node=3
+      1
+    /   \
+    2     3
+
+Output:
+1
+*/
+
+
+//MAXIMUM SUM OF NON-ADJACENT NODES                               (T.C = O(N), S.C = O(H))
+class Solution{
+  public:
+    //<int,int> == <sum with include root node, sum with exclude root node>
+    pair<int,int>solve(Node *root){
+        //base case
+        if(root == NULL){
+            pair<int,int>p = make_pair(0,0);
+            return p;
+        }
+        
+        pair<int,int>left = solve(root->left);
+        pair<int,int>right = solve(root->right);
+        
+        pair<int,int>res;
+        
+        res.first = root->data + left.second + right.second;
+        res.second = max(left.first,left.second) + max(right.first,right.second);
+        
+        return res;
+    }
+    //Function to return the maximum sum of non-adjacent nodes.
+    int getMaxSum(Node *root) 
+    {
+        pair<int,int>ans = solve(root);
+        return max(ans.first,ans.second);
+    }
+};
+/*
+Input:
+        1
+      /   \
+     2     3
+    /     /  \
+   4     5    6
+Output: 16
+*/
