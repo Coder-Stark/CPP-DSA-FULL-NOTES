@@ -4,7 +4,6 @@
 using namespace std;
 
 
-/*
 //FOR REMOVE CASE SENSITIVITY
 char toLowerCase(char ch){
     if(ch >= 'a' && ch <= 'z'){
@@ -77,7 +76,6 @@ int main(){
 
     return 0;
 }
-*/
 /*OUTPUT
 Enter the name : 
 Nitin       //nitin
@@ -90,7 +88,7 @@ Palindrome or not : 1
 */
  
 
- //VALID PALINDROME (ONLY MAIN FUNCTION)
+//VALID PALINDROME (ONLY MAIN FUNCTION)
 /*
 bool valid(char ch){
     if(ch >= 'a' && ch <= 'z' || ch >= 'A' && ch<= 'Z' || ch >= '0' && ch<= '9'){
@@ -144,8 +142,8 @@ bool isPalindrome(string s){
 
 // REVERSE WORD IN A STRING 
 
+
 // RETURN MAXIMUM OCCURING CHARACTER IN AN INPUT STRING
-/*
 char getMaxOccChar(string s){
 
     //create an array of count of char
@@ -177,7 +175,6 @@ int main(){
 
     return 0;
 }
-*/
 /*OUTPUT
 Enter the string : 
 test
@@ -187,7 +184,6 @@ t
  
 
 //INT THE STRING REPLACE " " -> @40
-/*
 string replaceSpace(string s){
     string temp = "";
     for (int i = 0 ; i < s.length() ; i++){
@@ -212,7 +208,6 @@ int main(){
 
     return 0;
 }
-*/
 /*OUTPUT
 Enter the string :
 my name is shivam
@@ -222,7 +217,6 @@ my@40name@40is@40shivam
 
 
 //REMOVE ALL OCCURANCE OF A SUBSTRING
-/*
 string removeOccurance(string s , string part){
     while(s.length() != 0 && s.find(part) < s.length()){
         s.erase(s.find(part) , part.length());
@@ -242,7 +236,6 @@ int main(){
     string x = removeOccurance(s , part);
     cout<<"The required string is : "<<x<<endl;
 }
-*/
 /*OUTPUT
 Enter the string : 
 d a a b c b a a b c b c 
@@ -254,10 +247,11 @@ The required string is : d a b
 
 //PERMUTATION IN STRING
 
+
 //REMOVE ALL ADJACENTS  DUPLICATES IN STRING
 
+
 //STRING COMPRESSION (only function)
-/*
 #include<vector>
 
 int compress(vector<char> c){
@@ -286,4 +280,3 @@ int compress(vector<char> c){
     }
     return ansIndex;
 }
-*/

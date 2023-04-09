@@ -6,7 +6,6 @@ using namespace std;
 
 
 //PRINT ARRAY 
-/*
 int printArray(int arr[] , int n){
     for(int i = 0 ; i < n ; i++){
         cout<<arr[i]<<" ";
@@ -17,16 +16,13 @@ int main(){
     cout<<"The array element are : "<<endl;
     printArray(a , 5);
 }
-*/
 /*OUTPUT
 The array element are : 
 2 3 54 4 21 
 */
 
 
-
 // MAX AND MIN ELEMENT IN ARRAY
-/*
 int getMax(int a[] , int n){
     // int max = INT_MIN;
     // for(int i = 0 ; i < n ; i++){
@@ -71,7 +67,6 @@ int main(){
     cout<<"Maximum elemeent in array : "<<getMax(a , n)<<endl;
     cout<<"Minimum elemeent in array : "<<getMin(a , n)<<endl;
 }
-*/
 /*OUTPUT
 // Enter the size of an array : 
 // 6
@@ -90,7 +85,6 @@ Minimum elemeent in array : -8
 
 
 //SUM OF AN ARRAY ELEMENTS
-/*
 int ArraySum(int a[] , int n){
     int sum = 0;
     for(int i = 0 ; i < n ; i++){
@@ -112,7 +106,6 @@ int main(){
 
     cout<<"Sum of array elements is : "<<ArraySum(a , n)<<endl;
 }
-*/
 /*OUTPUT
 Enter the size of an array : 
 7 
@@ -124,7 +117,6 @@ Sum of array elements is : 28
 
 
 //LINEAR SEARCH
-/*
 bool LinearSearch(int a[] ,int n ,int key){
     for(int i = 0 ; i < n ; i++){
         if(a[i] == key){
@@ -160,7 +152,6 @@ int main(){
 
     return 0;
 }
-*/
 /*OUTPUT
 Enter the size of an array : 
 6
@@ -176,7 +167,6 @@ key is present
 
 
 //REVERSE ARRAY ELEMENT
-/*
 void Reverse(int a[] , int n){
     int start = 0;
     int end = n-1;
@@ -208,7 +198,6 @@ int main(){
 
     return 0;
 }
-*/
 /*OUTPUT
 Enter the size of an array : 
 5
@@ -221,7 +210,6 @@ Reverse of array :
 
 
 //SWAP ALTERNATE
-/*
 void swap(int a[] , int n){
     for(int i = 0 ; i < n ; i = i+2){
         if(a[i+1] < n){
@@ -249,7 +237,6 @@ int main(){
     swap(a , n);
     PrintArray(a , n);
 }
-*/
 /*OUTPUT
 Enter the size of an array : 
 9
@@ -262,7 +249,6 @@ Array after alternate swap
 
 
 //FIND UNIQUE ELEMENT IN ARRAY 
-/*
 int FindUnique(int a[] , int n){
     int ans = 0;
 
@@ -288,7 +274,6 @@ int main(){
     return 0;
 
 }
-*/
 /*OUTPUT
 Enter the size of an array : 
 5
@@ -300,7 +285,6 @@ Unique no. is : 3
 
 
 //FIND DUPLICATE ELEMENT IN ARRAY 
-/*
 int FindDuplicate(int a[] , int n){
     int ans = 0;
     for(int i = 0 ; i < n ; i++){
@@ -327,7 +311,6 @@ int main(){
     return 0;
 
 }
-*/
 /*OUTPUT
 Enter the size of an array : 
 5
@@ -339,7 +322,6 @@ Duplicate no. is : 4
 
 
 //ARRAY INTERSECTION
-/*
 int findIntersection(int a[] , int b[] , int n , int m){
     int i = 0 , j = 0 , ans = 0;
     while(i < n && j < m){
@@ -376,7 +358,6 @@ int main(){
 
     cout<<"Find Intersection : "<<findIntersection(a , b , n , m)<<endl;
 }
-*/
 /*OUTPUT(EXPECTED)
 Enter the size of array a : 
 5
@@ -392,7 +373,9 @@ Find Intersection : 2 3 4
 
 
 //PAIR SUM
-/*logic
+/*
+#include<vector>
+#include<algorithm>
 int PairSum(int a[] , n){
     int i = 0 ;
     int j = n-1;
@@ -413,14 +396,10 @@ int PairSum(int a[] , n){
 }
 */
 
-
-
 //TRIPLET SUM
 
 
-
 //SORT 0'S AND 1'S
-/*
 void SortOne(int a[] , int n){
     int left = 0;        //i , j = left  , right
     int right = n-1;
@@ -460,7 +439,6 @@ int main(){
     return 0;
 
 }
-*/
 /*OUTPUT
 Enter the size of an array : 
 5
@@ -471,7 +449,6 @@ Sorted array of  0's and 1's is  :
 */
 
 //BINARY SEARCH
-/*
 int BinarySearch(int a[] , int n , int key){
     int start = 0;
     int end = n-1;
@@ -512,7 +489,6 @@ int main(){
     return 0;
 
 }
-*/
 /*OUTPUT
 Enter the size of an array : 
 7
@@ -525,7 +501,6 @@ key element is found at index : 5
 
 
 //FIRST AND LAST POSITION OF ELEMENT IN SORTED ARRAY
-/*
 int FirstOccurance(int a[] , int n , int key){
     int s = 0;
     int e = n-1;
@@ -589,7 +564,6 @@ int main(){
     return 0;
 
 }
-*/
 /*OUTPUT
 Enter the size of an array : 
 7
@@ -604,7 +578,6 @@ Total occurance of an element is : 5
 
 
 //PEAK INDEX IN MOUNTAIN ARRAY
-/*
 int PeakIndex(int a[] , int n){
     int s = 0;
     int e = n-1;
@@ -636,7 +609,6 @@ int main(){
 
     return 0;
 }
-*/
 /*OUTPUT
 Enter the size of an array : 
 7
@@ -647,7 +619,6 @@ Peak Index in Mountain Array is : 3
 
 
 //FIND PIVOT IN AN ARRAY
-/*
 int GetPivot(int a[] , int n){
     int s = 0; 
     int e = n-1;
@@ -679,7 +650,6 @@ int main(){
 
     return 0;
 }
-*/
 /*OUTPUT
 Enter the size of an array : 
 5
@@ -690,7 +660,6 @@ Pivot Index in Array is : 3
 
 
 //SEARCH IN ROTATED SORTED ARRAY
-/*
 int GetPivot(int a[] , int n){
     int s = 0;
     int e = n-1;
@@ -753,7 +722,6 @@ int main(){
 
     return 0;
 }
-*/
 /*OUTPUT
 Enter the size of an array : 
 7
@@ -766,7 +734,6 @@ Search in Rotated Sorted Array is : 3
 
 
 //SQUARE ROOT USING BINARY SEARCH (morePricise function use to find precise value )
-/*
 long long int SqrtInteger(int n){
     int s = 0;
     int e = n;
@@ -815,7 +782,6 @@ int main(){
 
     return 0;
 }
-*/
 /*OUTPUT
 Enter the value to find its sqareroot : 
 37
@@ -827,7 +793,6 @@ Very Precide Square root of n : 6.082
 //BOOK ALLOCATION PROBLEM
 //n = no. of books ,, m = no. of students
 /*Allocate the book to m students such that Maximum no. of pages assigned to a student is minimum value*/
-/*
 int isPossible(int a[] , int n , int m , int mid){
     int studentCount = 1;
     int pageSum = 0;
@@ -888,7 +853,6 @@ int main(){
 
     return 0;
 }
-*/
 /*OUTPUT
 Enter the no. of books : 
 4
@@ -909,8 +873,8 @@ minimum value : 60
 //n = no. of stalls , k = aggressive cows
 //put the cow to the stall , such that the minimum distance between two of them is as large as possible,
 //Return largest minimum distance
-/*
 #include<algorithm>
+/*
 bool isPossible(int a[] ,int n , int k , int mid){
     int cowCount = 1;
     int lastPos = a[0];

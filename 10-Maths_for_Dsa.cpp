@@ -1,11 +1,11 @@
 //MATHS FOR DSA
 
 #include<iostream>
+#include<vector>
 using namespace std;
 
 
 //CHECK PRIME
-/*
 bool isPrime(int n){
     if(n<=1){
         return 0;
@@ -26,7 +26,6 @@ int main(){
 
     return 0;
 }
-*/
 /*OUTPUT
 Enter the number : 
 11
@@ -35,7 +34,6 @@ The number is prime or not : 1
 
 
 //COUNT PRIMES
-/*
 class Solution {
 public:
     int countPrimes(int n) {
@@ -54,11 +52,9 @@ public:
         return count;
     }
 };
-*/
 
 
 //GCD
-/*
 int gcd(int a , int b){
     if(a == 0)
     return b;
@@ -89,7 +85,6 @@ int main(){
 
     return 0;
 }
-*/
 
 
 //MODULAR EXPONENTIATION

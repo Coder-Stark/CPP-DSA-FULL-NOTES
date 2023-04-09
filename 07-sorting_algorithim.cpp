@@ -2,10 +2,8 @@
 #include<iostream>
 using namespace std;
 
-/*
+
 //SELECTION SORT
-
-
 void seclectionSort(int a[] , int n){
     for(int i = 0 ; i < n-1 ; i++){
         int minIndex = i;
@@ -37,7 +35,6 @@ int main(){
     cout<<"The sorted array after selection sort is : "<<endl;
     PrintArray(a , n);
 }
-*/
 /*OUTPUT
 Enter the size of an array : 
 7
@@ -49,7 +46,6 @@ The sorted array after selection sort is :
 
 
 //BUBBLE SORT
-/*
 void bubbleSort(int a[] , int n){
     for(int i = 1 ; i < n; i++){
         bool swapped = false;                   //for optimisation of bestcase (O(n))
@@ -84,7 +80,6 @@ int main(){
     cout<<"The sorted array after bubble sort is : "<<endl;
     PrintArray(a , n);
 }
-*/
 /*OUTPUT
 Enter the size of an array : 
 7
@@ -96,7 +91,6 @@ The sorted array after bubble sort is :
 
 
 //INSERTION SORT
-/*
 void insertionSort(int a[] , int n){
     for(int i = 1 ; i < n; i++){
         int temp = a[i];
@@ -133,7 +127,6 @@ int main(){
     cout<<"The sorted array after insertion sort is : "<<endl;
     PrintArray(a , n);
 }
-*/
 /*OUTPUT
 Enter the size of an array : 
 7

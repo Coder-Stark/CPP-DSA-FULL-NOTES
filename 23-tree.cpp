@@ -1264,3 +1264,274 @@ Input:
    4     5    6
 Output: 16
 */
+
+
+//CONSTRUCT TREE FROM INORDER AND PREORDER              (T.C = O(N^2), S.C = O(N))
+//ERROR
+class Solution{
+public:
+    int findPosition(int in[], int element, int n){
+        for(int i = 0 ; i < n ; i++){
+            if(in[i] == element){
+                return i;
+            }
+        }
+        return -1;
+    }
+    Node *solve(int in[], int pre[], int &index, int inOrderStart, int inOrderEnd, int n){
+        //base case
+        if(index >= n || inOrderStart > inOrderEnd){
+            return NULL;
+        }
+        
+        //create root node for element
+        int element = pre[index++];
+        Node* root = new Node(element);
+        
+        //find element's index in inOrder
+        int position = findPosition(in , element, n);
+        
+        //in case of preorder and inorder, we first build left subtree
+        root->left = solve(in, pre, index, inOrderStart, position-1, n);
+        root->right = solve(in, pre, index, position+1, inOrderEnd, n);
+        
+        return root;
+    }
+    Node* buildTree(int in[],int pre[], int n)
+    {
+        int preOrderIndex = 0;
+        Node *ans = solve(in ,pre ,preOrderIndex ,0,n-1,n);
+        
+        return ans;
+    }
+};
+//Alternate solution                                    (T.C = O(NLOGN), S.C = O(N)) 
+class Solution{ 
+public:
+    void createMapping(int in[], map<int,int>&nodeToIndex, int n){
+        for(int i = 0 ; i < n ; i++){
+            nodeToIndex[in[i]] = i;
+        }
+    }
+    Node *solve(int in[], int pre[], int &preOrderIndex, int inOrderStart, int inOrderEnd, int n, map<int,int>&nodeToIndex){
+        //base case
+        if(preOrderIndex >= n || inOrderStart > inOrderEnd){
+            return NULL;
+        }
+        
+        //create root node for element
+        int element = pre[preOrderIndex++];
+        Node* root = new Node (element);
+        
+        //find element's index in inOrder
+        int position = nodeToIndex[element];
+        
+        root->left = solve(in, pre, preOrderIndex, inOrderStart, position-1, n, nodeToIndex);
+        root->right = solve(in, pre, preOrderIndex, position+1, inOrderEnd, n, nodeToIndex);
+        
+        return root;
+    }
+    Node* buildTree(int in[],int pre[], int n)
+    {
+        int preOrderIndex = 0;
+        int inOrderStart = 0;
+        int inOrderEnd = n-1;
+        map<int,int>nodeToIndex;
+        
+        //create mapping node to index
+        createMapping(in, nodeToIndex, n);
+        
+        Node *ans = solve(in ,pre ,preOrderIndex ,inOrderStart, inOrderEnd ,n , nodeToIndex);
+        
+        return ans;
+    }
+};
+/*
+Input:
+N = 4
+inorder[] = {1 6 8 7}
+preorder[] = {1 6 7 8}
+Output: 8 7 6 1
+*/
+
+
+//TREE FROM POSTORDER AND INORDER                       (T.C = O(NLOGN), S.C = O(N))   
+void createMapping(int in[], map<int,int>&nodeToIndex, int n){
+    for(int i = 0 ; i < n ; i++){
+        nodeToIndex[in[i]] = i;
+    }
+}
+Node *solve(int in[], int post[], int &index, int inOrderStart, int inOrderEnd, int n, map<int,int>&nodeToIndex){
+    //base case
+    if(index < 0 || inOrderStart > inOrderEnd){
+        return NULL;
+    }
+    
+    //create root node for element
+    int element = post[index--];
+    Node* root = new Node(element);
+    
+    //find element's index in inOrder
+    int position = nodeToIndex[element];
+    
+    //in case of postorder and inorder, we first build right subtree
+    root->right = solve(in, post, index, position+1, inOrderEnd, n, nodeToIndex);
+    root->left = solve(in, post, index, inOrderStart, position-1, n, nodeToIndex);
+    
+    
+    return root;
+}
+Node *buildTree(int in[], int post[], int n) {
+    int postOrderIndex = n-1;
+    map<int,int>nodeToIndex;
+    
+    //create mapping node to index
+    createMapping(in, nodeToIndex, n);
+    
+    Node *ans = solve(in ,post ,postOrderIndex ,0,n-1,n , nodeToIndex);
+    
+    return ans;
+}
+/*
+Input:
+N = 5
+in[] = 9 5 2 3 4
+post[] = 5 9 3 4 2
+Output: 2 9 5 4 3
+*/
+
+
+//BURNING TREE                                                    (T.C = O(N), S.C = O(H)) 
+class Solution {
+  public:
+    //create mapping and find target node
+    Node* createMapping(Node* root, int target , map<Node* ,Node*>&nodeToParent){
+        Node* res = NULL;
+        queue<Node*>q;
+        q.push(root);
+        
+        nodeToParent[root] = NULL;
+        while(!q.empty()){
+            Node*front = q.front();
+            q.pop();
+            if(front->data == target){
+                res = front;
+            }
+            if(front->left){
+                nodeToParent[front->left] = front;
+                q.push(front->left);
+            }
+            if(front->right){
+                nodeToParent[front->right] = front;
+                q.push(front->right);
+            }
+        }
+        return res;
+    }
+    
+    int burnTree(Node* root, map<Node*, Node*>&nodeToParent){
+        map<Node*,bool>visited;
+        queue<Node*>q;
+        q.push(root);
+        visited[root] = true;
+        int ans = 0;
+        
+        while(!q.empty()){
+            int size = q.size();
+            bool flag = 0;
+            for(int i = 0 ; i < size ; i++){
+                //process neighbour nodes
+                Node* front = q.front();
+                q.pop();
+                
+                if(front->left && !visited[front->left]){
+                    flag = 1;
+                    q.push(front->left);
+                    visited[front->left] = 1;
+                }
+                if(front->right && !visited[front->right]){
+                    flag = 1;
+                    q.push(front->right);
+                    visited[front->right] = 1;
+                }
+                if(nodeToParent[front] && !visited[nodeToParent[front]]){
+                    flag = 1;
+                    q.push(nodeToParent[front]);
+                    visited[nodeToParent[front]] = 1;
+                }
+            }
+            if(flag == 1){
+                ans++;
+            }
+        }
+        return ans;
+        
+    }
+    int minTime(Node* root, int target) 
+    {
+        map<Node*,Node*>nodeToParent;
+        Node *targetNode = createMapping(root, target, nodeToParent);
+        
+        int ans = burnTree(targetNode, nodeToParent);
+        
+        return ans;
+    }
+};
+/*
+Input:      
+          1
+        /   \
+      2      3
+    /  \      \
+   4    5      6
+       / \      \
+      7   8      9
+                   \
+                   10
+Target Node = 8
+Output: 7
+Explanation:
+If leaf with the value 
+8 is set on fire. 
+After 1 sec: 5 is set on fire.
+After 2 sec: 2, 7 are set to fire.
+After 3 sec: 4, 1 are set to fire.
+After 4 sec: 3 is set to fire.
+After 5 sec: 6 is set to fire.
+After 6 sec: 9 is set to fire.
+After 7 sec: 10 is set to fire.
+It takes 7s to burn the complete tree.
+*/
+
+
+//FLATTEN BINARY TREE TO LINKED LIST                                       (T.C = O(N), S.C = O(1))
+class Solution
+{
+    public:
+    void flatten(Node *root)
+    {
+        Node *curr = root;
+        while(curr != NULL){
+            if(curr->left){
+                Node *pred = curr->left;
+                while(pred->right){
+                    pred = pred->right;
+                }
+                pred->right = curr->right;
+                curr->right = curr->left;
+                curr->left = NULL;
+            }
+            curr = curr->right;
+        }
+    }
+};
+/*
+Input : 
+          1
+        /   \
+       2     5
+      / \     \
+     3   4     6
+Output :
+1 2 3 4 5 6 
+*/

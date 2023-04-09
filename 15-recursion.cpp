@@ -3,7 +3,6 @@
 #include<iostream>
 using namespace std;
 
-/*
 int fact(int n){
     //base case
     if(n == 0){
@@ -25,10 +24,8 @@ int main(){
     int ans = fact(n);
     cout<<ans<<endl;
 }
-*/
 
 
-/*
 int power(int n){
     //base Case
     if(n==0){
@@ -49,10 +46,8 @@ int main(){
     int ans = power(n);
     cout<<ans<<endl;
 }
-*/
 
 
-/*
 void count(int n){
     //base case
     if(n == 0){
@@ -75,10 +70,8 @@ int main(){
     count(n);
 
 }
-*/
 
 
-/*
 void reachHome(int src , int dest){
 
     cout<<"source "<<src<<" dest "<<dest<<endl;
@@ -101,11 +94,9 @@ int main(){
 
     reachHome(src , dest);
 }
-*/
 
 
 //FIBONACCI NUMBER
-/*
 class Solution {
 public:
     int fib(int n) {
@@ -123,10 +114,8 @@ public:
         return ans;
     }
 };
-*/
 
 //COUNT WAYS TO REACH THE N-TH STAIRS (CS)
-/*
 int countDistinctWayToClimbStair(long long nStairs){
 
     //base case
@@ -152,11 +141,9 @@ int main(){
 
     return 0;
 }
-*/
 
 
 //SAY DIGITS
-/*
 void sayDigits(int n , string arr[]){
     //base case
     if(n==0){
@@ -181,11 +168,9 @@ int main(){
     cout<<"The numbers in words : "<<endl;
     sayDigits(n,arr);
 }
-*/
 
 
 //ARRAY IS SORTED OR NOT and GET SUM OF ARRAY ELEMENT (RECURSION)
-/*
 bool isSorted(int a[],int n){
 
     //base case
@@ -230,11 +215,8 @@ int main(){
     int ans2 = getSum(a , n);
     cout<<"Array sum is : "<<ans2<<endl;
 }
-*/
-
 
 //LINEAR SEARCH
-/*
 bool linearSearch(int a[] , int n , int k){
 
     //base case
@@ -263,11 +245,9 @@ int main(){
         cout<<"Absent"<<endl;
     }
 }
-*/
 
 
 //BINARY SEARCH
-/*
 bool binarySearch(int a[] ,int s , int e , int k){
     int mid = s + (e-s)/2;
     
@@ -301,11 +281,9 @@ int main(){
         cout<<"Absent"<<endl;
     }
 }
-*/
 
 
 //REVERSE STRING 
-/*
 void reverse(int i , int j , string &s){
 
     //base case
@@ -330,10 +308,8 @@ int main(){
     cout<<s<<endl;
 
 }
-*/
 
 
-/*
 bool checkPalindrome(int i , int j , string &s){
 
     //base case
@@ -359,11 +335,9 @@ int main(){
         cout<<"Not a Palindrome "<<endl;
     }
 }
-*/
 
 
 //FIND POWER
-/*
 int power(int a , int b){
     //base case
     if(b == 0){
@@ -394,7 +368,6 @@ int main(){
     cout<<"The ans is : "<<ans<<endl;
 
 }
-*/
 
 
 //BUBBLE SORT
@@ -427,7 +400,6 @@ int main(){
 
 
 //MERGE SORT
-/*
 void merge(int *a , int s , int e){
     int mid = s + (e-s)/2;
     int len1 = mid - s + 1;
@@ -500,11 +472,9 @@ int main(){
         cout<<a[i]<<" ";
     }
 }
-*/
 
 
 //QUICK SORT
-/*
 int partition(int a[] , int s , int e){
     int pivot = a[s];
 
@@ -562,10 +532,9 @@ int main(){
         cout<<a[i]<<" ";
     }
 }
-*/
 
 //SUBSETS
-/*
+#include<vector>
 class Solution {
 private:
     void solve(vector<int>nums , vector<int>output , int index , vector<vector<int>> &ans){
@@ -594,10 +563,8 @@ public:
         return ans;
     }
 };
-*/
 
 //SUBSEQUENCES OF STRING
-/*
 #include<iostream>
 #include<vector>
 #include<string>
@@ -630,11 +597,9 @@ vector<string> subsequences(string str){
 	return ans;
 	
 }
-*/
 
 
 //LETTER COMBINATIONS OF A PHONE NUMBER
-/*
 class Solution {
 private : 
     void solve(string digits , string output , int index , vector<string> &ans , string mapping[]){
@@ -670,11 +635,9 @@ public:
         return ans;
     }
 };
-*/
 
 
 // PERMUTATIONS
-/*
 class Solution {
 private:
     void solve(vector<int> nums  , int index , vector<vector<int>> &ans){
@@ -700,11 +663,9 @@ public:
         return ans;
     }
 };
-*/
 
 
 //RAT IN MAZE PROBLEM
-/*
 #include<vector>
 #include<algorithm>
 
@@ -784,8 +745,6 @@ vector<string>findPath(vector<vector<int>>&m , int n){
     return ans;
 
 }
-*/
-
 /*OUTPUT
 Enter the value of n : 
 5

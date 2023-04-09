@@ -12,7 +12,6 @@
 using namespace std;
 
 
-/*
 int main(){
     int n;
     cout<<"Enter the value of n : "<<endl;
@@ -28,7 +27,6 @@ int main(){
     }
     cout<<"Answer is : "<<ans <<endl;
 }
-*/
 /*OUTPUT
 Enter the value of n : 
 5
@@ -38,7 +36,7 @@ Answer is : 101
 
 
 //DECIMAL TO BINARY
-/* INCOMPLETE
+// INCOMPLETE
 int main(){
     int n;
     cout<<"Enter the value of n : "<<endl;
@@ -48,12 +46,10 @@ int main(){
     while(n != 0){
         int digit = n % 2;
         n = n/2;
-        ans = ans + 
     }
 }
-*/
 
-/* CHAT GPT
+// CHAT GPT
 #include <iostream>
 #include <cmath>
 #include <string>
@@ -80,12 +76,11 @@ int main()
     std::cout << "Binary equivalent of the decimal number " << decimalNumber << " is " << decimalToBinary(decimalNumber) << std::endl;
     return 0;
 }
-*/
+
 
 
 
 //BINARY TO DECIMAL
-/*
 int main(){
     int n ;
     cout<<"Enter the value of n : "<<endl;
@@ -101,7 +96,6 @@ int main(){
     }
     cout<<"Answer is : "<<ans<<endl;
 }
-*/
 /*OUTPUT
 Enter the value of n : 
 1010

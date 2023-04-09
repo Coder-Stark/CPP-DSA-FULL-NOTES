@@ -5,7 +5,7 @@ using namespace std;
 
 
 //SUBTRACT THE PRODUCT AND SUM OF THE DIGIT
-/*
+
 int main(){
     int n;
     cout<<"Enter the value of n : "<<endl;
@@ -22,9 +22,8 @@ int main(){
     int subtract = product - sum;
     cout<<"Subtract the product ands sum of digit : "<<subtract<<endl;
 }
-*/
+
 //in leetCode
-/*
 class Solution {
 public:
     int subtractProductAndSum(int n) {
@@ -41,7 +40,6 @@ public:
         return sub;
     }
 };
-*/
 /*OUTPUT
 Enter the value of n :
 25
@@ -50,7 +48,6 @@ Subtract the product ands sum of digit : 3
 
 
 //NUMBER OF 1 BITS
-/*
 int main(){
     int n;
     cout<<"Enter the value of n : "<<endl;
@@ -64,9 +61,7 @@ int main(){
     }
     cout<<"number of 1 bits in n : " <<count;
 }
-*/
 //in leet code
-/*
 class Solution {
 public:
     int hammingWeight(uint32_t n) {
@@ -80,7 +75,6 @@ public:
         return count;
     }
 };
-*/
 /*OUTPUT
 Enter the value of n :
 11111000000
@@ -91,7 +85,6 @@ number of 1 bits in n :
 
 // REVERSE INTEGER
 // for simple case (in range)
-/*
 int main(){
     int n;
     cout<<"Enter the value of n : "<<endl;
@@ -104,7 +97,6 @@ int main(){
     }
     cout<<"Reverse of integer : "<<ans<<endl;
 }
-*/
 /*OUTPUT
 Enter the value of n :
 5678
@@ -112,7 +104,6 @@ Reverse of integer : 8765
 */
 
 // for exception case ( out range)
-/*
 int main(){
     int n;
     cout<<"Enter the valueo of n : "<<endl;
@@ -128,9 +119,8 @@ int main(){
     }
     cout<<"Reverse of integer : "<<ans<<endl;
 }
-*/
+
 //in leet code
-/*
 class Solution {
 public:
     int reverse(int x) {
@@ -146,7 +136,6 @@ public:
         return ans;
     }
 };
-*/
 /*OUTPUT
 Enter the valueo of n :
 123456789
@@ -154,7 +143,6 @@ Reverse of integer : 987654321
 */
 
 // COMPLIMENT OF BASE 10 INTEGER
-/*
 int main(){
     int n;
     cout<<"Enter the value of n : "<<endl;
@@ -171,7 +159,6 @@ int main(){
     ans = (~n) & mask;
     cout<<"Compliment of base 10 integer : "<<ans<<endl;
 }
-*/
 /*OUTPUT (EXPECTED)
 Enter the value of n :
 5
@@ -179,7 +166,6 @@ Compliment of base 10 integer : 2
 */
 
 // POWER OF 2
-/*
 int main(){
     int n;
     cout<<"Enter the value of n : "<<endl;
@@ -193,7 +179,6 @@ int main(){
     }
     cout<<"False"<<endl;
 }
-*/
 /*OUTPUT
 Enter the value of n :
 8
@@ -202,7 +187,6 @@ True
 
 
 //REVERSE ARRAY BY VECTOR
-/*
 #include<vector>
 
 vector<int>reverse(vector<int>v){
@@ -237,7 +221,6 @@ int main(){
     cout<<"array after reverse : "<<endl;
     print(ans);
 }
-*/
 /*OUTPUT
 array before reverse : 
 11 1 21 3 41 
@@ -248,7 +231,6 @@ array after reverse :
 
 
 //REVERSE ARRAY  AFTER POSITION M BY VECTOR
-/*
 #include<vector>
 
 vector<int> reverse(vector<int>v , int m){
@@ -286,8 +268,6 @@ int main(){
     cout<<"array after reverse : "<<endl;
     print(ans);
 }
-*/
-
 /*OUTPUT
 Enter the position from which reverse array : 
 2
@@ -299,7 +279,6 @@ array after reverse :
 
 
 //MERGE TO SORTED ARRAY IN SINGLE ARRAY
-/*
 void merge(int a[] ,int n , int b[] , int m , int c[]){
     int i = 0 ; 
     int j = 0 ;
@@ -344,7 +323,6 @@ int main(){
 
     return 0;
 }
-*/
 /*OUTPUT
 Array after merge is : 
 1 2 3 4 5 6 7 9
@@ -352,7 +330,6 @@ Array after merge is :
 
 
 //MOVE ZEROES
-/*
 void moveZeroes(int a[] , int n){
 
     //move all nonzero to left
@@ -389,7 +366,6 @@ int main(){
     return 0;
     
 }
-*/
 /*OUTPUT
 Enter the size of an array : 
 7
@@ -401,7 +377,6 @@ Zeroes at the right side :
 
 
 //ROTATE ARRAY
-/*
 void rotateArray(int a[] , int k){
     int temp[k];
     for(int i = 0 ; i < k; i++){
@@ -436,7 +411,6 @@ int main(){
     return 0;
     
 }
-*/
 /*OUTPUT(expected)
 Enter the size of an array : 
 7
@@ -450,7 +424,6 @@ Rotated array :
 
 
 //CHECK ARRAY IS SORTED AND ROTATED
-/*
 bool checkSortedRotated(int a[] , int n){
     int count = 0 ;
     for(int i = 1 ; i < n ; i++){
@@ -480,7 +453,6 @@ int main(){
     return 0;
     
 }
-*/
 /*OUTPUT
 Enter the size of an array : 
 5
@@ -492,7 +464,6 @@ Check array is sorted and rotated :
 
 
 //SUM OF TWO ARRAYS
-/*
 #include<vector>
 
 vector<int>reverse(vector<int>v){
@@ -578,7 +549,6 @@ int main(){
     print(ans);
 
 }
-*/
 /*OUTPUT(expected)
 1 2 3 4 5 
 6 7 8 9 0

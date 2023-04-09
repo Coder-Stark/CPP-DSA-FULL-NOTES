@@ -3,7 +3,7 @@
 #include<iostream>
 using namespace std;
 
-/*
+
 int main(){
     int a = 4;
     int b = 6;
@@ -32,7 +32,6 @@ int main(){
     cout<<"(--i) : "<<(--i)<<endl;
     
 }
-*/
 /*OUTPUT
 a : 4
 b : 6
@@ -57,7 +56,6 @@ b : 6
 
 
 //FOR LOOP
-/*
 int main(){
     int n;
     cout<<"Enter the value of n : "<<endl;
@@ -68,7 +66,6 @@ int main(){
         cout<<i<<" ";
     }
 }
-*/
 /*OUTPUT
 Enter the value of n : 
 5
@@ -77,7 +74,6 @@ Printing the count from 1 to n :
 */
 
 
-/*
 int main(){
     int n;
     cout<<"Enter the value of n : "<<endl;
@@ -88,7 +84,6 @@ int main(){
     }
     cout<<"sum of numbers from 1 to n : "<<sum<<endl;
 }
-*/
 /*OUTPUT
 Enter the value of n : 
 100
@@ -96,7 +91,6 @@ sum of numbers from 1 to n : 5050
 */
 
 
-/*
 int main(){
     int n ; 
     cout<<"Enter the value of n : "<<endl;
@@ -112,7 +106,6 @@ int main(){
         b = nextNumber;
     }
 }
-*/
 /*OUTPUT
 Enter the value of n : 
 10
@@ -121,7 +114,6 @@ Fibonaccin Series of first n numbers :
 */
 
 
-/*
 int main(){
     int n;
     cout<<"Enter the value of n : "<<endl;
@@ -141,7 +133,6 @@ int main(){
         cout<<"is a Prime Number"<<endl;
     }
 }
-*/
 /*OUTPUT
 Enter the value of n : 
 11

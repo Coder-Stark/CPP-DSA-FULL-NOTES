@@ -197,7 +197,6 @@ After remove loop LL is :
 
 
 //DETECT AND REMOVE LOOP (IN CN)
-/*
 Node * floydDetect(Node * head){
     if(head == NULL){
         return NULL;
@@ -237,6 +236,7 @@ Node * getStartingNode(Node * head){
     }
     return slow;
 }
+/*
 Node *removeLoop(Node *head)
 {
     if(head == NULL){
@@ -256,7 +256,6 @@ Node *removeLoop(Node *head)
     return head;
 }
 */
-
 /*OUTPUTS
 Sample Input:
 6 2

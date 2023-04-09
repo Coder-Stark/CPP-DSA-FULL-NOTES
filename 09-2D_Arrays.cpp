@@ -4,7 +4,6 @@
 #include<climits>
 using namespace std;
 
-/*
 //SEARCH IN 2D ARRAY
 bool isPresent(int a[][4] , int target , int i , int j){
     for(int i = 0 ; i < 3 ; i++){
@@ -100,7 +99,6 @@ int main(){
 
     return 0;
 }
-*/
 /*OUTPUT
 Enter the elements of 2D array  : 
 1 2 3 4 5 6 7 8 9 10 11 12
@@ -126,7 +124,6 @@ Maximum row sum is at index : 2
 
   
 //PRINT LIKE A WAVE
-/*
 #include<vector>
 
 vector<int> wavePrint(vector<vector<int>>a , int nRow , int mCol){
@@ -147,11 +144,9 @@ vector<int> wavePrint(vector<vector<int>>a , int nRow , int mCol){
     }
     return ans;
 }
-*/
 
 
 //SPIRAL PRINT
-/*
 class Solution {
 public:
     vector<int> spiralOrder(vector<vector<int>>& matrix) {
@@ -202,11 +197,9 @@ public:
         return ans;
     }
 };
-*/
 
 
 //SEARCH IN 2D MATRIX
-/*
 class Solution {
 public:
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
@@ -234,11 +227,9 @@ public:
         return 0;
     }
 };
-*/
 
 
 //SEARCH IN 2D MATRIX (2)
-/*
 class Solution {
 public:
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
@@ -263,4 +254,3 @@ public:
         return 0;
     }
 };
-*/

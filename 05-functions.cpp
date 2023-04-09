@@ -4,7 +4,6 @@ using namespace std;
 
 
 //POWER (A^B)
-/*
 int power(int a , int b){
     int ans = 1;
     for(int i = 1 ; i <= b  ; i++){
@@ -22,7 +21,6 @@ int main(){
 
     return 0;
 }
-*/
 /*OUTPUT
 Enter the value of a and b : 
 3
@@ -32,7 +30,6 @@ Answer is : 81
 
 
 //NUMBER IS EVEN OR ODD
-/*
 bool isEven(int a){
     if( a & 1){
         return 0;
@@ -56,7 +53,6 @@ int main(){
 
     return 0;
 }
-*/
 /*OUTPUT
 // Enter the number : 
 // 34
@@ -69,7 +65,6 @@ The number is Odd
 
 
 //CALCULATE n-C-r
-/*
 int factorial(int n){
     int fact = 1;
     for(int i = 1 ; i <= n ; i++ ){
@@ -93,7 +88,6 @@ int main(){
     int res = nCr(n , r);
     cout<<"Result is : "<<res<<endl;
 }
-*/
 /*OUTPUT
 Enter the value of n and r : 
 8
@@ -103,7 +97,6 @@ Result is : 28
 
 
 //PRINT COUNTING
-/*
 int PrintCounting(int n){
     for(int i = 1 ; i <= n ; i++){
         cout<<i<<" ";
@@ -119,7 +112,6 @@ int main(){
 
     return 0;
 }
-*/
 /*OUTPUT
 Enter the value of n : 
 6
@@ -129,7 +121,6 @@ The counting is :
 
 
 //PRIME OR NOT
-/*
 bool isPrime(int n){
     for(int i = 2 ; i < n ; i++ ){
         if(n % i == 0){
@@ -153,7 +144,6 @@ int main(){
         cout<<"Is not a Prime number"<<endl;
     }
 }
-*/
 /*OUTPUT
 // Enter the value of n : 
 // 7

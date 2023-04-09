@@ -3,7 +3,6 @@
 #include<iostream>
 using namespace std;
 
-/*
 int main(){
     int n;
     cout<<"Enter the value of n : "<<endl;
@@ -19,7 +18,6 @@ int main(){
         i++;
     }
 }
-*/
 /*OUTPUT
 Enter the value of n : 
 4
@@ -30,7 +28,6 @@ Enter the value of n :
 */
 
 
-/*
 int main(){
     int n ;
     cout<<"Enter the value of n : "<<endl;
@@ -47,7 +44,6 @@ int main(){
     }
 
 }
-*/
 /*OUTPUT
 Enter the value of n : 
 4
@@ -58,7 +54,6 @@ Enter the value of n :
 */
 
 
-/*
 int main(){
     int n ;
     cout<<"Enter the value of n :"<<endl;
@@ -74,7 +69,6 @@ int main(){
         i++;
     }
 }
-*/
 /*OUTPUT
 Enter the value of n :
 4
@@ -85,7 +79,6 @@ Enter the value of n :
 */ 
 
 
-/*
 int main(){
     int n ;
     cout<<"Enter the value of n ; "<<endl;
@@ -101,7 +94,6 @@ int main(){
         i++;
     }
 }
-*/
 /*OUTPUT
 Enter the value of n ; 
 4
@@ -112,7 +104,6 @@ Enter the value of n ;
 */
 
 
-/*
 int main(){
     int n;
     cout<<"Enter the value of n : "<<endl;
@@ -130,7 +121,6 @@ int main(){
         i++;
     }
 }
-*/
 /*OUTPUT
 Enter the value of n : 
 3
@@ -140,7 +130,6 @@ Enter the value of n :
 */
 
 
-/*
 int main(){
     int n;
     cout<<"Enter the value of n : "<<endl;
@@ -156,7 +145,6 @@ int main(){
         i++;
     }
 }
-*/
 /*OUTPUT
 Enter the value of n : 
 4
@@ -166,7 +154,7 @@ Enter the value of n :
  *  *  *  *
 */
 
-/*
+
 int main(){
     int n;
     cout<<"Enter the value of n : "<<endl;
@@ -182,7 +170,6 @@ int main(){
         i++;
     }
 }
-*/
 /*OUTPUT
 Enter the value of n : 
 4
@@ -193,7 +180,6 @@ Enter the value of n :
 */
 
 
-/*
 int main(){
     int n ;
     cout<<"Enter the value of n : "<<endl;
@@ -211,7 +197,6 @@ int main(){
         i++;
     }
 }
-*/
 /*OUTPUT
 Enter the value of n : 
 4
@@ -223,7 +208,6 @@ Enter the value of n :
 */
 
 
-/*
 int main(){
     int n ;
     cout<<"Enter the value of n : "<<endl;
@@ -241,7 +225,6 @@ int main(){
         i++;
     }
 }
-*/
 /*OUTPUT
 Enter the value of n : 
 4
@@ -252,7 +235,6 @@ Enter the value of n :
 */
 
 
-/*
 int main(){
     int n;
     cout<<"Enter the value of n : "<<endl;
@@ -268,7 +250,6 @@ int main(){
         i++;
     }
 }
-*/
 /*OUTPUT
 Enter the value of n : 
 4
@@ -279,7 +260,6 @@ Enter the value of n :
 */
 
 
-/*
 int main(){
     int n ;
     cout<<"Enter the value of n : "<<endl;
@@ -296,7 +276,6 @@ int main(){
         i++;
     }
 }
-*/
 /*OUTPUT
 Enter the value of n : 
 4
@@ -307,7 +286,6 @@ D D D D
 */
 
 
-/*
 int main(){
     int n;
     cout<<"Enter the value of n : "<<endl;
@@ -324,7 +302,6 @@ int main(){
         i++;
     }
 }
-*/
 /*OUTPUT
 Enter the value of n : 
 3
@@ -334,7 +311,6 @@ A B C
 */
 
 
-/*
 int main(){
     int n;
     cout<<"Enter the value of n : "<<endl;
@@ -351,7 +327,6 @@ int main(){
         i++;
     }
 }
-*/
 /*OUTPUT
 Enter the value of n : 
 3
@@ -361,7 +336,6 @@ G H I
 */
 
 
-/*
 int main(){
     int n;
     cout<<"Enter the value of n : "<<endl;
@@ -378,7 +352,6 @@ int main(){
         i++;
     }
 }
-*/
 /*OUTPUT
 Enter the value of n : 
 3
@@ -388,7 +361,6 @@ C D E
 */
 
 
-/*
 int main(){
     int n;
     cout<<"Enter the value of n : "<<endl;
@@ -405,7 +377,6 @@ int main(){
         i++;
     }
 }
-*/
 /*OUTPUT
 Enter the value of n : 
 3
@@ -415,7 +386,6 @@ C C C
 */
 
 
-/*
 int  main(){
     int n;
     cout<<"Enter the value of n : "<<endl;
@@ -432,7 +402,6 @@ int  main(){
         i++;
     }
 }
-*/
 /*OUTPUT
 Enter the value of n : 
 4
@@ -443,7 +412,6 @@ G H I J
 */
 
 
-/*
 int main(){
     int n;
     cout<<"Enter the value of n : "<<endl;
@@ -460,7 +428,6 @@ int main(){
         i++;
     }
 }
-*/
 /*OUTPUT
 Enter the value of n : 
 4
@@ -471,7 +438,6 @@ D E F G
 */
 
 
-/*
 int main(){
     int n;
     cout<<"Enter the value of n : "<<endl;
@@ -488,7 +454,6 @@ int main(){
         i++;
     }
 }
-*/
 /*OUTPUT
 Enter the value of n : 
 4
@@ -499,9 +464,6 @@ A B C D
 */
 
 
-
-
-/*
 int main(){
     int n;
     cout<<"Enter the value of n : "<<endl;
@@ -517,7 +479,6 @@ int main(){
         i++;
     }
 }
-*/
 /*OUTPUT
 Enter the value of n : 
 4
@@ -527,7 +488,7 @@ Enter the value of n :
 ****
 */
 
-/*
+
 int main(){
     int n;
     cout<<"Enter the value of n : "<<endl;
@@ -543,7 +504,6 @@ int main(){
         i--;
     }
 }
-*/
 /*OUTPUT
 Enter the value of n : 
 4
@@ -554,7 +514,6 @@ Enter the value of n :
 */
 
 
-/*
 int main(){
     int n;
     cout<<"Enter the value of n : "<<endl;
@@ -579,7 +538,6 @@ int main(){
         i++;
     }
 }
-*/
 /*OUTPUT
 Enter the value of n : 
 4
@@ -590,7 +548,6 @@ Enter the value of n :
 */
 
 
-/*
 int main(){
     int n ;
     cout<<"Enter the vlaue of n : "<<endl;
@@ -621,7 +578,6 @@ int main(){
         i++;
     }
 }
-*/
 /*OUTPUT
 Enter the vlaue of n : 
 4

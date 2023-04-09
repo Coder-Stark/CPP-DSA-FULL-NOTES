@@ -4,7 +4,6 @@
 using namespace std;
 
 //calculator using switch
-/*
 int main(){
     int a , b;
     char op;
@@ -30,7 +29,6 @@ int main(){
                 break;
     }
 }
-*/
 /*OUTPUT
 Enter the value of a : 
 8
@@ -42,7 +40,6 @@ Enter the operation :
 */
 
 //NUMBER OF NOTES REQUIRED OF 100 , 50 , 20 , 1
-/*
 int main(){
     int n1 , n20 , n50 , n100;
     n1 = n20 = n50 = n100 = 0;
@@ -77,7 +74,6 @@ int main(){
     cout<<"20 notes : "<<n20<<endl;
     cout<<"1 notes : "<<n1<<endl;
 }
-*/
 /*OUTPUT
 Enter the amount : 
 1330

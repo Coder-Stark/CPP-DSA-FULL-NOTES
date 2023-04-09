@@ -4,7 +4,6 @@
 using namespace std;
 
 //ENCAPSULATION
-/*
 class employee{
     private:
         string name;
@@ -27,14 +26,13 @@ int main(){
 
     return 0;
 }
-*/
 /*OUTPUTS
 The age of student is 34
 */
 
 
 //INHERITENCE
-/*
+#include<string>
 class human{
     public:
         int height;
@@ -56,6 +54,7 @@ class male : public human{
             cout<<"Male sleeping"<<endl;
         }
 };
+/*
 int main(){
     male m1;
     cout<<m1.age<<endl;
@@ -79,8 +78,8 @@ Male sleeping
 23
 */
 
+
 //single inheritance
-/*
 class animal{
     public:
     int age;
@@ -93,6 +92,7 @@ class animal{
 class dog : public animal{
 
 };
+/*
 int main(){
     dog d;
     d.speak();
@@ -106,8 +106,8 @@ Speaking
 6422352
 */
 
+
 //multilevel inheritance
-/*
 class animal{
     public:
     int age;
@@ -123,6 +123,7 @@ class dog : public animal{
 class germanShepherd : public dog{
 
 };
+/*
 int main(){
     germanShepherd g;
     g.speak();
@@ -137,7 +138,6 @@ Speaking
 */
 
 //multiple inheritance
-/*
 class animal{
     public:
     void bark(){
@@ -155,7 +155,7 @@ class human{
 class hybrid : public animal ,public human{
 
 };
-
+/*
 int main(){
     hybrid h;
 
@@ -172,8 +172,8 @@ Barking
 Speaking
 */
 
+
 //heirarical inhertiance
-/*
 class A {
     public:
     void fun1(){
@@ -192,6 +192,7 @@ class C : public A{
         cout<<"Inside fun 3 "<<endl;
     }
 };
+/*
 int main(){
     A a;
     a.fun1();
@@ -218,7 +219,6 @@ Inside fun 3
 */
 
 //hybrid inheritance
-/*
 class A {
     public:
     void fun1(){
@@ -243,6 +243,7 @@ class C : public A , public D{
         cout<<"fun3"<<endl;
     }
 };
+/*
 int main(){
 
     A a;
@@ -277,8 +278,8 @@ fun4
 fun4
 */
 
+
 //inheritance ambiguity
-/*
 class A {
     public:
     void fun(){
@@ -294,6 +295,7 @@ class B {
 class C : public A , public B{
 
 };
+/*
 int main(){
 
     C c;
@@ -315,8 +317,8 @@ i am fun form B
 
 //POLYMORPHISM (compile/static and run time/dynamic)
 
+
 //compile time polymorphism (function overloading)
-/*
 class A {
     public:
     void sayHello(){
@@ -333,14 +335,13 @@ int main(){
 
     return 0;
 }
-*/
 /*OUTPUTS
 hello
 hello shivam
 */
 
+
 //compile time polymorphism (operator overloading)
-/*
 class B{
     public:
     int a ; 
@@ -371,7 +372,6 @@ int main(){
 
     b1();
 }
-*/
 /*OUTPUTS
 
 output : 3
@@ -381,7 +381,6 @@ I am bracket
 */
 
 //run time polymorphism (method / functional overriding)
-/*
 class animal{
     public:
     void speak(){
@@ -400,7 +399,6 @@ int main(){
 
     return 0;
 }
-*/
 /*OUTPUTS
 Barking                    if dog -> speak not then "Speak" output
 */

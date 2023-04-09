@@ -2,7 +2,6 @@
 using namespace std;
 
 //MACROS
-/*
 #define pi 3.14
 
 int main(){
@@ -12,10 +11,9 @@ int main(){
     double area = pi * r * r ;
     cout<<area<<endl;
 }
-*/
+
 
 //GLOBAL VARIABLES              ---> BAD PRACTISE
-/*
 int x = 8;
 void a(int &i){
     cout<<"in a "<<x<<endl;
@@ -29,10 +27,8 @@ int main(){
     a(i);
     b(i);
 }
-*/
 
 //INLINE FUNCTIONS
-/*
 inline int getMax(int &a , int&b){
     return (a>b) ? a : b;
 }
@@ -50,10 +46,9 @@ int main(){
     ans = getMax(a , b);
     cout<<ans<<endl;
 }
-*/
+
 
 //DEFAULT ARGUMENTS
-
 void printArray(int arr[] , int n , int start = 0){
     for(int i = start ; i < n ; i++){
         cout<<arr[i]<<" ";
