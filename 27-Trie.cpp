@@ -275,3 +275,183 @@ true
 true
 false
 */
+
+ 
+//LONGEST COMMON PREFIX                                              {T.C = O(M*N) M = lenght of string , n = no. of strings}
+string longestCommonPrefix(vector<string> &arr, int n)
+{
+    string ans = "";
+
+    //traverse each character of 1 string
+    for(int i = 0 ; i < arr[0].length() ; i++){
+        char ch = arr[0][i];
+        bool match = true;
+
+        //comparing another strings 
+        for(int j = 1 ; j < n ; j++){
+            //not match
+            if(arr[j].size() < i || ch != arr[j][i]){
+                match = false;
+                break;
+            }
+        }
+        if(match == false){
+            break;
+        }
+        else{
+            ans.push_back(ch);
+        }
+    }
+    return ans;
+}
+/*
+Sample Input 1:
+2
+4
+coding codezen codingninja coder
+3
+night ninja nil 
+Sample Output 1:
+cod
+ni
+*/
+
+
+//IMPLEMENT A PHONE DIRECTORY
+class TrieNode{
+public:
+    char data;
+    TrieNode *children[26];
+    bool isTerminal;
+
+    TrieNode(char ch){
+        data = ch;
+        for(int i = 0 ; i < 26 ; i++){
+            children[i]  = NULL;
+        }
+        isTerminal = false;
+    }
+};
+class Trie {
+
+public:
+    TrieNode*root;
+    /** Initialize your data structure here. */
+    Trie() {
+        root = new TrieNode('\0');
+    }
+
+    /** Inserts a word into the trie. */
+    void insertUtil(TrieNode* root, string word){
+        //base case
+        if(word.length() == 0){
+            root->isTerminal = true;
+            return ;
+        }
+
+        //assume word will be in small
+        int index = word[0] - 'a';
+        TrieNode * child;
+
+        //present
+        if(root->children[index] != 0){
+            child = root->children[index];
+        }
+        //absent
+        else{
+            child = new TrieNode(word[0]);
+            root->children[index] = child;
+        }
+
+        //recursion
+        insertUtil(child, word.substr(1));
+
+    }
+    void insertWord(string word) {
+        insertUtil(root, word);
+    }
+
+    void printSuggestions(TrieNode * curr, vector<string>&temp,string prefix){
+        if(curr -> isTerminal){
+            temp.push_back(prefix);
+        }
+        for(char ch = 'a';ch <= 'z' ; ch++){
+
+            TrieNode* next = curr->children[ch - 'a'];
+
+            if(next != NULL){
+                prefix.push_back(ch);
+                printSuggestions(next, temp, prefix);
+                prefix.pop_back();
+            }
+        }
+    }
+
+    vector<vector<string>>getSuggestions(string str){
+        TrieNode * prev = root;
+        vector<vector<string>>output;
+        string prefix = "";
+
+        for(int i = 0 ; i < str.length() ; i++){
+            char lastCh = str[i];
+
+            prefix.push_back(lastCh);
+
+            //check for lastch is exit or not
+            TrieNode*curr = prev->children[lastCh - 'a'];
+
+            //if not found
+            if(curr == NULL){
+                break;
+            }
+
+            //if found
+            vector<string>temp;
+            printSuggestions(curr,temp,prefix);
+
+            output.push_back(temp);
+            temp.clear();
+            prev = curr;
+        }
+        return output;
+    }
+};
+
+vector<vector<string>> phoneDirectory(vector<string>&contactList, string &queryStr)
+{
+    //creation of trie
+    Trie* t = new Trie();
+
+    //insert all contact in trie
+    for(int i = 0 ; i < contactList.size(); i++){
+        string str = contactList[i];
+        t-> insertWord(str);
+    }
+
+    //return ans
+    return t->getSuggestions(queryStr);
+    
+}
+/*
+
+Sample Input 1 :
+2
+5
+cod coding codding code coly
+coding
+2
+ninjas coding
+ninja
+Sample Output 1 :
+cod coding codding code coly
+cod coding codding code coly
+cod coding codding code coly
+coding
+coding
+coding
+ninjas
+ninjas
+ninjas
+ninjas
+ninjas
+*/
