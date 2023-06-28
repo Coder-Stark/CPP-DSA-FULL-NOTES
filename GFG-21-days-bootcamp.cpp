@@ -404,3 +404,235 @@ Explanation:
 6th contiguous subarray = {5 2 3} Max = 5
 7th contiguous subarray = {2 3 6} Max = 6
 */
+
+
+//BINARY SEARCH                                             {T.C = O(LOGN), S.C = O(1)}
+class Solution {
+  public:
+    int binarysearch(int arr[], int n, int k) {
+        int low = 0;
+        int high = n-1;
+        
+        while(low <= high){
+            int mid = (low + high)/2;
+        
+            if(arr[mid] == k){
+                return mid;
+            }
+            else if(arr[mid] > k){
+                high = mid-1;
+            }
+            else{
+                low = mid+1;
+            }
+        }
+        return -1;
+    }
+};
+/*
+Input:
+N = 5
+arr[] = {1 2 3 4 5} 
+K = 4
+Output: 3
+Explanation: 4 appears at index 3.
+*/
+
+
+//BITONIC POINT                                          {T.C = O(LOGN), S.C = O(1)}
+class Solution{
+public:
+	
+	int findMaximum(int a[], int n) {
+	    int low = 0;
+	    int high = n-1;
+	    
+	    while(low <= high){
+	        int mid = (low + high)/2;
+	        if(mid > 0 && mid < n-1){          //non corner elements
+                if(a[mid] > a[mid-1] && a[mid] > a[mid+1]){
+                    return a[mid];
+                }
+                else if(a[mid] > a[mid-1]){
+                    low = mid+1;
+                }
+                else{
+                    high = mid-1;
+                }
+	        }
+	        else{                              //corner elements
+	            if(mid == 0){
+	                return max(a[0], a[1]);    //ateleast 2 elemeents in an array
+	            }
+	            else if(mid == (n-1)){
+	                return max(a[n-2], a[n-1]);
+	            }
+	        }
+	    }
+	    return -1;
+	}
+};
+/*
+Input: 
+n = 9
+arr[] = {1,15,25,45,42,21,17,12,11}
+Output: 45
+Explanation: Maximum element is 45.
+*/
+
+
+//MINIMIZE THE SUM OF PRODUCT                              //{T.C = O(NLOGN) , S.C = O(1)}
+class Solution{
+    public:
+    long long int minValue(int a[], int b[], int n)
+    {
+        long long int ans = 0;
+        sort(a,a+n);
+        sort(b,b+n);
+        reverse(b,b+n);
+        for(int i = 0 ; i < n ; i++){
+            ans = ans + a[i]*b[i];
+        }
+        return ans;
+    }
+};
+/*
+Input:
+N = 3 
+A[] = {3, 1, 1}
+B[] = {6, 5, 4}
+Output:
+23 
+Explanation:
+1*6+1*5+3*4 = 6+5+12
+= 23 is the minimum sum
+*/
+
+
+//MINIMUM PLATFORMS                                              {T.C = O(NLOGN), S.C = O(N)}
+class Solution{
+public:
+    int findPlatform(int arr[], int dep[], int n)          //arr = arrival , dep = departure
+    {
+        // Sort the arrival and departure times in ascending order
+        sort(arr, arr + n);
+        sort(dep, dep + n);
+    
+        int platforms = 1;  // At least one platform is required
+        int maxPlatforms = 1;  // Keep track of the maximum number of platforms needed
+    
+        int arrivalIndex = 1;
+        int departureIndex = 0;
+    
+        while (arrivalIndex < n && departureIndex < n) {
+            if (arr[arrivalIndex] <= dep[departureIndex]) {
+                platforms++;  // Increment the number of platforms needed
+                maxPlatforms = max(maxPlatforms, platforms);
+                arrivalIndex++;
+            } else {
+                platforms--;  // Reduce the number of platforms needed
+                departureIndex++;
+            }
+        }
+        return maxPlatforms;
+    }
+};
+/*
+Input: n = 6 
+arr[] = {0900, 0940, 0950, 1100, 1500, 1800}
+dep[] = {0910, 1200, 1120, 1130, 1900, 2000}
+Output: 3
+Explanation: 
+Minimum 3 platforms are required to 
+safely arrive and depart all trains.
+*/
+
+
+//CHOCOLATE DISTRIBUTION PROBLEM                                             {T.C = O(NLOGN), S.C = O(1)}
+class Solution{
+    public:
+    long long findMinDiff(vector<long long> a, long long n, long long m){
+
+        sort(a.begin(),a.end());
+        
+        int start = 0;
+        int end = 0;
+        long long minD = INT_MAX;
+        
+        for(int i = 0 ; i+m-1 < n ; i++){
+            long long diff = a[i+m-1] - a[i];
+            if(diff < minD){
+                minD = diff;
+                start = i;
+                end = i+m-1;
+            }
+        }
+        return minD;
+    }   
+};
+/*
+Input:
+N = 8, M = 5
+A = {3, 4, 1, 9, 56, 7, 9, 12}
+Output: 6
+Explanation: The minimum difference between 
+maximum chocolates and minimum chocolates 
+is 9 - 3 = 6 by choosing following M packets :
+{3, 4, 9, 7, 9}.
+*/
+
+
+//TRIPLET SUM IN ARRAY
+//BRUTE FORCE                                   {T.C = O(N^3), S.C = O(1)}
+class Solution {
+public:
+    bool find3Numbers(int A[], int n, int X) {
+        for (int i = 0; i < n - 2; i++) {
+            for (int j = i + 1; j < n - 1; j++) {
+                for (int k = j + 1; k < n; k++) {
+                    if (A[i] + A[j] + A[k] == X) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+};
+
+//TWO POINTER APPROACH                         {T.C = O(N^2) , S.C = O(1)}
+class Solution {                                                   
+public:
+    bool find3Numbers(int A[], int n, int X) {
+        int l , r;
+        sort(A, A+n);
+        
+        for(int i = 0 ; i < n-2 ; i++){
+            l = i+1;
+            r = n-1;
+            
+            while(l < r){
+                if(A[i] + A[l] + A[r] == X){
+                    return true;
+                }
+                else if(A[i] + A[l] + A[r] < X){
+                    l++;
+                }
+                else{
+                    r--;
+                }
+            }
+        }
+        return false;
+    }
+};
+/*
+Input:
+n = 6, X = 13
+arr[] = [1 4 45 6 10 8]
+Output:
+1
+Explanation:
+The triplet {1, 4, 8} in 
+the array sums up to 1
+*/
