@@ -636,3 +636,104 @@ Explanation:
 The triplet {1, 4, 8} in 
 the array sums up to 1
 */
+
+
+//POWER OF NUMBERS  (exponential algorithm)                                  {T.C = O(LOGN), S.C = O(LOGN)}
+#define mod 1000000007
+
+class Solution{
+    public:
+    //You need to complete this fucntion
+    long long fexp(int x , int y){
+        long long ans;
+        //base case
+        if(x == 0){
+            return 0;
+        }
+        if(y == 0){
+            return 1;
+        }
+        
+        
+        if(y % 2 == 0){
+            //even
+            ans = fexp(x, y/2);
+            ans = ((ans)%mod*(ans)%mod)%mod;
+        }
+        else{
+            //odd
+            ans = ((x)%mod*(fexp(x, y-1))%mod)%mod;
+        }
+        return (ans+mod)%mod;
+    }
+    long long power(int N,int R)
+    {
+       return fexp(N, R);
+        
+    }
+};
+/*
+Input:
+N = 12
+Output: 864354781
+Explanation: The reverse of 12 is 21and 1221 when divided by 1000000007 gives remainder as 864354781.
+*/
+
+
+//PERMUTAIONS OF GIVEN STRINGS                                                                  {T.C = O(N! * N), S.C = O(N! * N)}
+class Solution {
+public:
+    set<string> st;
+    string s;
+
+    void rec(int i) {
+        if (i == s.size()) {
+            st.insert(s);
+        } else {
+            for (int j = i; j < s.size(); j++) {
+                swap(s[i], s[j]);
+                rec(i + 1);
+                swap(s[i], s[j]);
+            }
+        }
+    }
+
+    vector<string> find_permutation(string S) {
+        s = S;
+        rec(0);
+        vector<string> ans(st.begin(), st.end());
+        return ans;
+    }
+};
+
+//CHATGPT
+class Solution {
+public:
+    vector<string> find_permutation(string S) {
+        vector<string> permutations;
+        backtrack(S, 0, permutations);
+        return permutations;
+    }
+
+    void backtrack(string& s, int start, vector<string>& permutations) {
+        if (start == s.size() - 1) {
+            permutations.push_back(s);
+            return;
+        }
+
+        for (int i = start; i < s.size(); i++) {
+            swap(s[start], s[i]);
+            backtrack(s, start + 1, permutations);
+            swap(s[start], s[i]);
+        }
+    }
+};
+
+/*
+Input: ABC
+Output:
+ABC ACB BAC BCA CAB CBA
+Explanation:
+Given string ABC has permutations in 6 
+forms as ABC, ACB, BAC, BCA, CAB and CBA .
+*/
