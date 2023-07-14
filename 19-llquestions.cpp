@@ -1,5 +1,5 @@
 //LINKED LIST QUESTIONS
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 
 
@@ -129,8 +129,6 @@ Node* kReverse(Node* head, int k) {
     //return head of reversed list
     return prev;
 }
-
-
 /*
 //input
 1 2 3 4 5 6 
@@ -400,7 +398,6 @@ class Solution{
 
 
 //ADD TWO NUMBERS REPRESENTED BY LINKED LIST
-
 class Solution
 {
     private:

@@ -1401,3 +1401,204 @@ Explanation: The middle element for
 
 /*  MATRIX  */
 
+
+//37. SPIRALLY TRAVERSAL OF MATRIX                                               {T.C = O(N), S.C = O(N)}
+class Solution
+{   
+    public: 
+    //Function to return a list of integers denoting spiral traversal of matrix.
+    vector<int> spirallyTraverse(vector<vector<int> > matrix, int r, int c) 
+    {
+        vector<int>ans;
+        
+        int left = 0;
+        int right = c-1;                                   //r = mat.size() , c = mat[0].size();
+        int top = 0;
+        int bottom = r-1;
+        
+        //flow of traversal == right->bottom->left->top
+        while(left <= right && top <= bottom){
+            //right
+            for(int i = left ; i <= right ; i++ ){
+                ans.push_back(matrix[top][i]);
+            }
+            top++;
+            //bottom
+            for(int i = top ; i <= bottom ; i++){
+                ans.push_back(matrix[i][right]);
+            }
+            right--;
+            //left
+            if(top <= bottom){
+                for(int i = right ; i >= left ; i--){
+                    ans.push_back(matrix[bottom][i]);
+                }
+                bottom--;
+                
+            }
+            //top
+            if(left <= right){
+                for(int i = bottom ; i >= top ; i--){
+                    ans.push_back(matrix[i][left]);
+                }
+                left++;
+            }
+        }
+        return ans;
+    }
+};
+/*
+Input:
+r = 4, c = 4
+matrix[][] = {{1, 2, 3, 4},
+           {5, 6, 7, 8},
+           {9, 10, 11, 12},
+           {13, 14, 15,16}}
+Output: 
+1 2 3 4 8 12 16 15 14 13 9 5 6 7 11 10
+*/
+
+
+//38. SEARCH ELEMENT IN A 2D MATRIX                                        {T.C = O(LOG(N*M)), S.C = O(1)}
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        int row = matrix.size();
+        int col = matrix[0].size();
+
+        int s = 0;
+        int e = row * col - 1;
+
+        int mid = s + (e-s)/2;                   //mid = (s+e)/2
+
+        while(s <= e){
+            int element = matrix[mid/col][mid%col];               //mid/col == row , mid%col == column
+            if(element == target){
+                return 1;
+            }
+            else if(element < target){
+                s = mid + 1;
+            }
+            else{
+                e = mid - 1;
+            }
+            mid = s + (e - s)/2;
+        }
+        return 0;
+    }
+};
+/*
+Input: matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 3
+Output: true
+*/
+
+
+//39. MEDIAN IN A ROW WISE SORTED MATRIX
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution{   
+public:
+    int median(vector<vector<int>> &m, int r, int c){
+        int mini = INT_MAX;
+        int maxi = INT_MIN;
+        
+        for(int i = 0 ; i < r ; i++){
+            //finding the minimum element
+            if(m[i][0] < mini){
+                mini = m[i][0];
+            }
+            //finding the maximum element
+            if(m[i][c-1] > maxi){
+                maxi = m[i][c-1];
+            }
+        }
+        int desired = (r*c + 1)/2;                            //odd
+        while(mini < maxi){
+            int mid = mini + (maxi-mini)/2;
+            int place = 0;
+            
+            //find count of elements smaller then mid
+            for(int i = 0 ; i < r ; i++){
+                place += upper_bound(m[i].begin(), m[i].end(), mid) - m[i].begin();
+            }
+            if(place < desired){
+                mini = mid+1;
+            }
+            else{
+                maxi = mid;
+            }
+        }
+        return mini;
+    }
+};
+/*
+Input:
+R = 3, C = 3
+M = [[1, 3, 5], 
+     [2, 6, 9], 
+     [3, 6, 9]]
+Output: 5
+Explanation: Sorting matrix elements gives 
+us {1,2,3,3,5,6,6,9,9}. Hence, 5 is median. 
+*/
+
+
+//40. ROW WITH MAX 1'S
+//BRUTE FORCE APPROACH                                                       {T.C = O(N*M), S.C = O(1)}
+class Solution{
+public:
+	int rowWithMax1s(vector<vector<int> > arr, int n, int m) {
+	    int maxCount = 0;                        
+	    int maxRow = -1;                           //row index
+	    
+	    for(int i = 0 ; i < n ; i++){
+	        int count = 0;                         //count of 1's
+	        for(int j = 0 ; j < m ; j++){
+	            if(arr[i][j] == 1){
+	                count++;
+	            }
+	        }
+    	    if(count > maxCount){
+    	        maxCount = count;
+    	        maxRow = i;
+    	    }
+	    }
+        return maxRow;  
+	}
+};
+
+//OPTIMIZED APPROACH (BINARY SEARCH)                                                     {T.C = O(N+M) , S.C = O(1)}
+class Solution{
+public:
+	int rowWithMax1s(vector<vector<int> > arr, int n, int m) {
+	    int maxRow = -1;
+	    int maxCount = 0;
+	    int j = m-1;
+	    
+	    //traverse each row
+	    for(int i = 0 ; i < n ; i++){
+	        //move left until we find the last occurance of 1 in the current row
+    	    while(j >= 0 && arr[i][j] == 1){
+    	        j--;
+    	    }
+    	    //check if the count of 1's in this row is higher than the current maximum
+    	    if(m-1-j > maxCount){
+    	        maxCount = m-1-j;
+    	        maxRow = i;
+    	    }
+	    }
+	    return maxRow;
+	}
+};
+/*
+Input: 
+N = 4 , M = 4
+Arr[][] = {{0, 1, 1, 1},
+           {0, 0, 1, 1},
+           {1, 1, 1, 1},
+           {0, 0, 0, 0}}
+Output: 2
+Explanation: Row 2 contains 4 1's (0-based
+indexing).
+*/

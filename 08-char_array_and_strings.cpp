@@ -1,6 +1,6 @@
 //CHARACTER ARRAY AND STRINGS
 
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 
 
@@ -89,7 +89,6 @@ Palindrome or not : 1
  
 
 //VALID PALINDROME (ONLY MAIN FUNCTION)
-/*
 bool valid(char ch){
     if(ch >= 'a' && ch <= 'z' || ch >= 'A' && ch<= 'Z' || ch >= '0' && ch<= '9'){
         return 1;
@@ -137,11 +136,44 @@ bool isPalindrome(string s){
     //3rd case check palindrome
     return checkPalindrome(temp);
 }
-*/
 
 
 // REVERSE WORD IN A STRING 
-
+class Solution
+{
+    public:
+    //Function to reverse words in a given string.
+    string reverseWords(string s) 
+    { 
+        string ans = "";                               //store actual ans
+        string temp = "";                              //store reversed word
+        
+        for(int i = s.length()-1 ; i >= 0 ; i--){
+            if(s[i] == '.'){
+                reverse(temp.begin(), temp.end());
+                ans = ans + temp;
+                ans.push_back('.');
+                temp = "";
+            }
+            else{
+                temp.push_back(s[i]);
+            }
+        }
+        //handle 1 word
+        reverse(temp.begin(), temp.end());
+        ans = ans + temp;
+        return ans;
+    } 
+};
+/*
+Input:
+S = i.like.this.program.very.much
+Output: much.very.program.this.like.i
+Explanation: After reversing the whole
+string(not individual words), the input
+string becomes
+much.very.program.this.like.i
+*/
 
 // RETURN MAXIMUM OCCURING CHARACTER IN AN INPUT STRING
 char getMaxOccChar(string s){

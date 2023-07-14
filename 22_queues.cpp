@@ -69,7 +69,6 @@ Doubly Ended Queue is empty
 */
  
 //IMPLEMENT QUEUE                       (T.C == O(1))                  
-
 class Queue {
         int *arr;
         int size;

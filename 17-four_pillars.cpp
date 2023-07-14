@@ -4,6 +4,12 @@
 using namespace std;
 
 //ENCAPSULATION
+/*
+Encapsulation is the process of bundling data and methods (or functions) that operate on that data into a
+single unit called an object. It hides the internal details of an object and provides a public interface to 
+interact with it. Encapsulation helps achieve data abstraction, data security, and code modularity, as objects 
+can be treated as black boxes that can be reused and modified without affecting other parts of the program.
+ */
 class employee{
     private:
         string name;
@@ -32,6 +38,12 @@ The age of student is 34
 
 
 //INHERITENCE
+/*
+Inheritance allows the creation of new classes (derived classes) based on existing classes (base or parent classes). 
+The derived classes inherit the properties (fields and methods) of the base class, enabling code reuse and promoting the 
+concept of hierarchy. Inheritance facilitates the creation of specialized classes that inherit common attributes and 
+behaviors from a more general class, thereby reducing code duplication and increasing code maintainability.
+*/
 #include<string>
 class human{
     public:
@@ -316,6 +328,13 @@ i am fun form B
 
 
 //POLYMORPHISM (compile/static and run time/dynamic)
+/*
+Polymorphism means the ability of an object to take on many forms. It allows objects of different classes to be treated 
+as objects of a common base class. Polymorphism enables methods to be defined in the base class and overridden in the 
+derived classes, providing different implementations based on the specific object type. This concept allows for code flexibility
+and extensibility, as objects can be used interchangeably, and the appropriate method implementation is determined at runtime based
+on the actual object type.
+*/
 
 
 //compile time polymorphism (function overloading)
@@ -406,3 +425,10 @@ Barking                    if dog -> speak not then "Speak" output
 
 //ABSTRACTION
 //implementation hiding
+/*
+Abstraction involves simplifying complex systems by breaking them down into smaller, more manageable units. It focuses on
+capturing only the essential characteristics and behavior of an object while hiding unnecessary details. Abstraction provides 
+a high-level view of an object or system and defines its properties and behaviors without specifying the implementation. 
+It allows programmers to work with abstract concepts and models, promoting code reusability and reducing complexity by providing 
+a clear separation between the interface and the implementation.
+*/

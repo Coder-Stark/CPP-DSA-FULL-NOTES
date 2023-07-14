@@ -737,3 +737,20 @@ Explanation:
 Given string ABC has permutations in 6 
 forms as ABC, ACB, BAC, BCA, CAB and CBA .
 */
+
+
+//HACKEREARTH(GOOGLE PRACTISE)
+//FIND CLOSEST NUMBER OF ZERO
+int Solve (int N, vector <int> A) {
+    int closest = INT_MAX;
+    int closestValue = INT_MAX;
+
+    for(int i = 0 ; i < N ; i++){
+        int diff = abs(A[i]);
+        if(diff < closest || (diff == closest && A[i] > closestValue)){
+            closest = diff;
+            closestValue = A[i];
+        }
+    }
+    return closestValue;
+}

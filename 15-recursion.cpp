@@ -24,6 +24,11 @@ int main(){
     int ans = fact(n);
     cout<<ans<<endl;
 }
+/*output
+Enter the value of n : 
+5
+120
+*/
 
 
 int power(int n){
@@ -46,6 +51,11 @@ int main(){
     int ans = power(n);
     cout<<ans<<endl;
 }
+/*output
+Enter the value of  (2^n) n : 
+6
+64
+*/
 
 
 void count(int n){
@@ -57,7 +67,6 @@ void count(int n){
 
     //RR
     count(n-1);
-
     cout<< n <<endl;              //print in increasing order 
 
 
@@ -70,6 +79,12 @@ int main(){
     count(n);
 
 }
+/*output
+Enter the value of  n :
+6
+6 5 4 3 2 1
+1 2 3 4 5 6
+*/
 
 
 void reachHome(int src , int dest){
@@ -94,6 +109,19 @@ int main(){
 
     reachHome(src , dest);
 }
+/*output
+source 1 dest 10
+source 2 dest 10
+source 3 dest 10
+source 4 dest 10
+source 5 dest 10
+source 6 dest 10
+source 7 dest 10
+source 8 dest 10
+source 9 dest 10
+source 10 dest 10
+pahuch gaya
+*/
 
 
 //FIBONACCI NUMBER
@@ -114,6 +142,7 @@ public:
         return ans;
     }
 };
+
 
 //COUNT WAYS TO REACH THE N-TH STAIRS (CS)
 int countDistinctWayToClimbStair(long long nStairs){
@@ -141,6 +170,11 @@ int main(){
 
     return 0;
 }
+/*output
+Enter the no. of ways to climb : 
+5
+8
+*/
 
 
 //SAY DIGITS
@@ -168,6 +202,12 @@ int main(){
     cout<<"The numbers in words : "<<endl;
     sayDigits(n,arr);
 }
+/*output
+Enter the number : 
+413
+The numbers in words : 
+four one three
+*/
 
 
 //ARRAY IS SORTED OR NOT and GET SUM OF ARRAY ELEMENT (RECURSION)
@@ -215,6 +255,11 @@ int main(){
     int ans2 = getSum(a , n);
     cout<<"Array sum is : "<<ans2<<endl;
 }
+/*output
+Array is sorted 
+Array sum is : 34
+*/
+
 
 //LINEAR SEARCH
 bool linearSearch(int a[] , int n , int k){
@@ -245,6 +290,9 @@ int main(){
         cout<<"Absent"<<endl;
     }
 }
+/*output
+present
+*/
 
 
 //BINARY SEARCH
@@ -281,11 +329,13 @@ int main(){
         cout<<"Absent"<<endl;
     }
 }
+/*output
+present
+*/
 
 
 //REVERSE STRING 
 void reverse(int i , int j , string &s){
-
     //base case
     if(i > j ){
         return ;
@@ -300,14 +350,16 @@ void reverse(int i , int j , string &s){
 int main(){
     string s = "shivam";
 
-
-
-    reverse(0 , s.length()-1,s);
+    reverse(0 , s.length()-1, s);
 
     cout<<"String after reverse : "<<endl;
     cout<<s<<endl;
 
 }
+/*output
+String after reverse : 
+mavihs
+*/
 
 
 bool checkPalindrome(int i , int j , string &s){
@@ -335,6 +387,8 @@ int main(){
         cout<<"Not a Palindrome "<<endl;
     }
 }
+/*output
+Its a Palindrome */
 
 
 //FIND POWER
@@ -368,10 +422,14 @@ int main(){
     cout<<"The ans is : "<<ans<<endl;
 
 }
+/*output
+Enter the value of a and b : 
+2
+6
+The ans is : 64*/
 
 
 //BUBBLE SORT
-/*
 int bubbleSort(int a[], int n){
     //base case
     if(n==0 || n == 1){
@@ -396,6 +454,9 @@ int main(){
         cout<<a[i]<<" ";
     }
 }
+/*output
+Array after sorting (bubble) : 
+1 3 5 7 8 9
 */
 
 
@@ -472,6 +533,9 @@ int main(){
         cout<<a[i]<<" ";
     }
 }
+/*output
+Array after sorting (merge) : 
+1 2 4 6 9 23 25 34 64*/
 
 
 //QUICK SORT
@@ -532,8 +596,13 @@ int main(){
         cout<<a[i]<<" ";
     }
 }
+/*output
+Array after sorting (quick) : 
+1 2 4 6 9 23 25 34 64
+*/
 
-//SUBSETS
+
+//SUBSETS                              //exclude, include == backtracking
 #include<vector>
 class Solution {
 private:
@@ -563,6 +632,11 @@ public:
         return ans;
     }
 };
+/*output
+Input: nums = [1,2,3]
+Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+*/
+
 
 //SUBSEQUENCES OF STRING
 #include<iostream>
@@ -597,6 +671,13 @@ vector<string> subsequences(string str){
 	return ans;
 	
 }
+/*output
+Input:
+1 
+abc
+Output:
+a ab abc ac b bc c
+*/
 
 
 //LETTER COMBINATIONS OF A PHONE NUMBER
@@ -635,6 +716,10 @@ public:
         return ans;
     }
 };
+/*output
+Input: digits = "23"
+Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]
+*/
 
 
 // PERMUTATIONS
@@ -746,78 +831,6 @@ vector<string>findPath(vector<vector<int>>&m , int n){
 
 }
 /*OUTPUT
-Enter the value of n : 
-5
-120
-
-Enter the value of  (2^n) n : 
-6
-64
-
-Enter the value of  n :
-6
-6 5 4 3 2 1
-1 2 3 4 5 6
-
-source 1 dest 10
-source 2 dest 10
-source 3 dest 10
-source 4 dest 10
-source 5 dest 10
-source 6 dest 10
-source 7 dest 10
-source 8 dest 10
-source 9 dest 10
-source 10 dest 10
-pahuch gaya
-
-Enter the no. of ways to climb : 
-5
-8
-
-Enter the number : 
-413
-The numbers in words : 
-four one three
-
-Array is sorted 
-Array sum is : 34
-
-Present
-
-Present
-
-String after reverse : 
-mavihs
-
-Its a Palindrome 
-
-Enter the value of a and b : 
-2
-6
-The ans is : 64
-
-Array after sorting (bubble) : 
-1 3 5 7 8 9
-
-Array after sorting (merge) : 
-1 2 4 6 9 23 25 34 64
-
-Array after sorting (merge) : 
-1 2 4 6 9 23 25 34 64
-
-Input: nums = [1,2,3]
-Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
-
-Input:
-1 
-abc
-Output:
-a ab abc ac b bc c
-
-Input: digits = "23"
-Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]
-
 Input: nums = [1,2,3]
 Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 */

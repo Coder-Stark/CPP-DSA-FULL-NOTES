@@ -43,7 +43,6 @@ The size of stack is : 1
 
 
 //IMPLEMENTATION OF STACK
-
 class Stack{
     //properties
     public:
@@ -296,8 +295,7 @@ bool isValidParenthesis(string expression)
             //closing bracket
             if (!s.empty()) {
               char top = s.top();
-              if (ch == ')' && top == '(' || ch == ']' && top == '[' ||
-                  ch == '}' && top == '{') {
+              if (ch == ')' && top == '(' || ch == ']' && top == '[' || ch == '}' && top == '{') {
                 s.pop();
               } else {
                 return false;
@@ -359,7 +357,7 @@ Sample Output 1 :
 */
 
 
-//REVERSE STACK USING RECURSION   (T.C == O(N2))
+//REVERSE STACK USING RECURSION                                                    (T.C == O(N2))
 void insertAtBottom(stack<int>&s , int x){
     //base case
     if(s.empty()){
@@ -435,8 +433,7 @@ Sample Output 1:
 */
 
 
-//REDUNDANT BRACKET                      (T.C == O(N))    
-
+//REDUNDANT BRACKET                                                              (T.C == O(N))    
 bool findRedundantBrackets(string &s)
 {
     stack<char>st;
@@ -711,7 +708,7 @@ Output: 1
 */
 
 
-//N STACK IN AN ARRAY             (T.C == O(N) , S.C == O(N + S)
+//N STACK IN AN ARRAY                                                      (T.C == O(N) , S.C == O(N + S)
 class NStack
 {
     int *arr;

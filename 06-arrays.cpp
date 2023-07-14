@@ -1,6 +1,6 @@
 // ARRAYS 
 
-#include<iostream>
+#include<bits/stdc++.h>
 #include<climits>
 using namespace std;
 
@@ -325,7 +325,7 @@ Duplicate no. is : 4
 int findIntersection(int a[] , int b[] , int n , int m){
     int i = 0 , j = 0 , ans = 0;
     while(i < n && j < m){
-        if(a[i] = b[j]){
+        if(a[i] == b[j]){
             return ans;
             i++;
             j++;
@@ -373,30 +373,76 @@ Find Intersection : 2 3 4
 
 
 //PAIR SUM
+vector<vector<int>> pairSum(vector<int> &arr, int s){
+   vector<vector<int>>ans;
+   for(int i = 0 ; i < arr.size() ; i++){
+      for(int j = i+1 ; j < arr.size() ; j++){
+         if(arr[i] + arr[j] == s){
+            vector<int>temp;
+            temp.push_back(min(arr[i],arr[j]));
+            temp.push_back(max(arr[i], arr[j]));
+            ans.push_back(temp);
+         }
+      }
+   }
+   sort(ans.begin(), ans.end());
+   return ans;
+}
 /*
-#include<vector>
-#include<algorithm>
-int PairSum(int a[] , n){
-    int i = 0 ;
-    int j = n-1;
-    int sum = 0;
-    for(i = o ; i < n; i++){
-        for(j = i+1 ; j < n; j++){
-            if(a[i] + a[j] = sum){
-                vector<int>temp;
-                temp.push_back(min(a[i] , a[j]));
-                temp.push_back(max(a[i] , a[j]));
-                ans.push_back(temp);
+Sample Input 1:
+5 5
+1 2 3 4 5
+Sample Output 1:
+1 4
+2 3
+*/
+
+//TRIPLET SUM / 3SUM                                                    {T.C = O(N*LOGN), S.C = O(N)}
+vector<vector<int>> findTriplets(vector<int>& arr, int n, int K) {
+    sort(arr.begin(), arr.end());
+    vector<vector<int>> ans;
+
+    for (int i = 0; i < n - 2; i++) {
+        if (i == 0 || (i > 0 && arr[i] != arr[i - 1])) {
+            int l = i + 1;
+            int r = n - 1;
+
+            while (l < r) {
+                int sum = arr[i] + arr[l] + arr[r];
+                if (sum == K) {
+                    vector<int> temp;
+                    temp.push_back(arr[i]);
+                    temp.push_back(arr[l]);
+                    temp.push_back(arr[r]);
+                    ans.push_back(temp);
+
+                    while (l < r && arr[l] == arr[l + 1]) {
+                        l++;
+                    }
+                    while (l < r && arr[r] == arr[r - 1]) {
+                        r--;
+                    }
+                    l++;
+                    r--;
+                } else if (sum < K) {
+                    l++;
+                } else {
+                    r--;
+                }
             }
         }
     }
-    sort(ans.begin() , ans.end());
     return ans;
-
 }
+/*
+Sample Input 1:
+1
+5
+10 5 5 5 2
+12
+Sample Output 1:
+5 5 2
 */
-
-//TRIPLET SUM
 
 
 //SORT 0'S AND 1'S

@@ -1,9 +1,9 @@
 //LINKED LIST AND ITS TYPES
 
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 //SINGLY LINKED LIST
-/* 
+
 class node{
     public:
     int data;
@@ -87,24 +87,18 @@ int main(){
     cout<<n->next<<endl;
 
     //head pointed to n
-    // node * head = n;
-    // print(head);
-    // insertAtHead(head , 12);
-    // print(head);
-    // insertAtHead(head , 13);
-    // print(head);
+    /*
+    node * head = n;
+    print(head);
+    insertAtHead(head , 12);
+    print(head);
+    insertAtHead(head , 13);
+    print(head);
+    */
 
 
-    // //tail pointed to n
-    // node * head = n;
-    // node * tail = n;
-    // print(head);
-    // insertAtTail(tail , 12);
-    // print(head);
-    // insertAtTail(tail , 13);
-    // print(head);
-
-    
+    //tail pointed to n
+    /*
     node * head = n;
     node * tail = n;
     print(head);
@@ -112,21 +106,25 @@ int main(){
     print(head);
     insertAtTail(tail , 13);
     print(head);
+    */
 
+    /*
     insertAtPosition(head ,tail , 4 , 22);
     print(head);
-
+    
     cout<<"head : "<<head->data<<endl;
     cout<<"tail : "<<tail->data<<endl;
+    */
 
+    /*
     deleteNode(3 , head);
     print(head);
     cout<<"head : "<<head->data<<endl;
     cout<<"tail : "<<tail->data<<endl;
+    */
 
     return 0;
 }
-*/
 
 /*OUTPUTS
 10 
@@ -157,7 +155,6 @@ tail : 22
 
 
 //DOUBLY LINKED LIST
-/*
 class node{
     public:
     int data;
@@ -432,7 +429,7 @@ tail : 39
 
 
 //CIRCULAR LINKED LIST
-
+/*
 class node{
     public:
     int data;
@@ -543,12 +540,14 @@ int main(){
     print(tail);
 
     //deletion
+    /*
     deleteNode(tail , 3);
     print(tail);
     deleteNode(tail , 10);
     print(tail);
     deleteNode(tail , 5);
     print(tail);
+    */
 }
 
 /*OUTPUTS

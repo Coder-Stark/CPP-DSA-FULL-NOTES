@@ -4,6 +4,59 @@
 #include<climits>
 using namespace std;
 
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+
+//STORES THE ELEMENT OF A 2D MATRIX IN A 1D ARRAY
+int main() {
+    int rows, columns;
+    cout << "Enter the number of rows: ";
+    cin >> rows;
+    cout << "Enter the number of columns: ";
+    cin >> columns;
+
+    // Create a 2D matrix
+    vector<vector<int>> matrix(rows, vector<int>(columns));
+
+    // Input matrix elements
+    cout << "Enter the matrix elements:\n";
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            cin >> matrix[i][j];
+        }
+    }
+
+    // Store matrix elements in a 1D array
+    vector<int> array;
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            array.push_back(matrix[i][j]);
+        }
+    }
+
+    // Display the array
+    cout << "Elements in the array:\n";
+    for (int i = 0; i < array.size(); i++) {
+        cout << array[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+/*
+Enter the number of rows: 3
+Enter the number of columns: 3
+Enter the matrix elements:
+1 2 3 4 5 6 7 8 9 
+Elements in the array:
+1 2 3 4 5 6 7 8 9 
+*/
+
+
 //SEARCH IN 2D ARRAY
 bool isPresent(int a[][4] , int target , int i , int j){
     for(int i = 0 ; i < 3 ; i++){

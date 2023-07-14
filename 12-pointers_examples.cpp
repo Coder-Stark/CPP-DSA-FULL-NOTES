@@ -28,10 +28,10 @@ int main(){
     cout<<(*p3)++<<" ";
     cout<<f3<<endl;
 
-    // int *p4 = 0;
-    // int f4 = 110;
-    // *p4 = f4;                                  //error -- segmentation fault(wrong initialization)
-    // cout<<*p4<<endl;
+    int *p4 = 0;
+    int f4 = 110;
+    *p4 = f4;                                  //error -- segmentation fault(wrong initialization)
+    cout<<*p4<<endl;
 
     int f5 = 8;
     int s5 = 11;
@@ -123,6 +123,7 @@ int main(){
 //error -- segmentation fault(wrong initialization)
 11 13
 21.5 21.5 21.5
+
 20 4
 11 21
 0x61fe9c 0x61fe9c
