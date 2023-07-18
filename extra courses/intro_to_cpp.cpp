@@ -981,3 +981,499 @@ a
 Sample Output 1:
 bccb
 */
+
+
+//----------------------------------------------      OOPS        -------------------------------------------------------------------------------------
+
+
+//COMPLEX NUMBER CLASS
+class ComplexNumbers {
+private:
+    int real;
+    int img;
+public:
+    //constructor
+    ComplexNumbers(int x, int y){
+        real = x;
+        img = y;
+    }
+    void plus(ComplexNumbers c){
+        this->real = this->real+c.real;
+        this->img = this->img+c.img;
+    }
+    void multiply(ComplexNumbers d){
+        int a = (this->real)*(d.real) - (this->img)*(d.img);
+        int b = (this->real)*(d.img) + (this->img)*(d.real);
+        this->real = a;
+        this->img = b;
+    }
+    void print(){
+        cout<<real<<" + i"<<img<<endl;
+    }
+
+};
+
+int main() {
+    int real1, imaginary1, real2, imaginary2;
+
+    cin >> real1 >> imaginary1;
+    cin >> real2 >> imaginary2;
+
+    ComplexNumbers c1(real1, imaginary1);
+    ComplexNumbers c2(real2, imaginary2);
+
+    int choice;
+    cin >> choice;
+
+    if (choice == 1) {
+        c1.plus(c2);
+        c1.print();
+    } else if (choice == 2) {
+        c1.multiply(c2);
+        c1.print();
+    } else {
+        return 0;
+    }
+}
+/*
+Sample Input 1 :
+4 5
+6 7
+1
+Sample Output 1 :
+10 + i12
+*/
+
+
+//POLYNOMIAL CLASS
+class Polynomial {
+    public:
+    int *degCoeff;
+    int capacity;
+    Polynomial(){
+        degCoeff = new int[5];
+        for(int i = 0;i<5;i++){
+            degCoeff[i]=0;
+        }
+        capacity = 5;
+    }
+    Polynomial(Polynomial const &p2){
+        degCoeff = new int[p2.capacity];
+        for(int i = 0;i<p2.capacity;i++){
+            degCoeff[i]=p2.degCoeff[i];
+        }
+        capacity = p2.capacity;
+    }
+    void operator=(Polynomial const &p2){
+        this -> degCoeff = new int[p2.capacity];
+        for(int i = 0;i<p2.capacity;i++){
+            this -> degCoeff[i]=p2.degCoeff[i];
+        }
+        this -> capacity = p2.capacity;
+    }
+    void setCoefficient(int degree, int coeff){
+        if(degree >= capacity){
+            int *newdegCoeff = new int[degree +1];
+            for(int i= 0;i<capacity;i++){
+                newdegCoeff[i]=degCoeff[i];
+            }
+            for(int i = capacity;i<degree+1;i++){
+                newdegCoeff[i]=0;
+            }
+            delete [] degCoeff;
+            degCoeff = newdegCoeff;
+            capacity = degree+1;
+        }
+        degCoeff[degree]= coeff;
+    }
+    void print(){
+        for(int i = 0;i<capacity;i++){
+            if(this -> degCoeff[i]!=0){
+                cout<<this -> degCoeff[i]<<"x"<<i<<" ";
+            }
+        }cout<<endl;
+    }
+    Polynomial operator+(Polynomial const &p2){
+        Polynomial result;
+        result.capacity = max(capacity,p2.capacity);
+        result.degCoeff = new int[result.capacity];
+        if(capacity<p2.capacity){
+            int i = 0;
+            for(;i<capacity;i++){
+                result.degCoeff[i]=degCoeff[i]+p2.degCoeff[i];
+            }for(;i<p2.capacity;i++){
+                result.degCoeff[i]=p2.degCoeff[i];
+            }
+        }else{
+            int i= 0;
+            for(;i<p2.capacity;i++){
+                result.degCoeff[i]=degCoeff[i]+p2.degCoeff[i];
+            }for(;i<capacity;i++){
+                result.degCoeff[i]=degCoeff[i];
+            }
+        }
+        return result;
+    }
+    Polynomial operator-(Polynomial const &p2){
+        Polynomial result;
+        result.capacity = max(capacity,p2.capacity);
+        result.degCoeff = new int[result.capacity];
+        if(capacity<p2.capacity){
+            int i = 0;
+            for(;i<capacity;i++){
+                result.degCoeff[i]=degCoeff[i]-p2.degCoeff[i];
+            }for(;i<p2.capacity;i++){
+                result.degCoeff[i]=-p2.degCoeff[i];
+            }
+        }else{
+            int i= 0;
+            for(;i<p2.capacity;i++){
+                result.degCoeff[i]=degCoeff[i]-p2.degCoeff[i];
+            }for(;i<capacity;i++){
+                result.degCoeff[i]=degCoeff[i];
+            }
+        }
+        return result;
+    }
+    Polynomial operator*(Polynomial const &p2){
+        Polynomial result;
+        result.capacity = capacity + p2.capacity;
+        result.degCoeff = new int[result.capacity];
+        for(int i = 0;i<result.capacity;i++){
+            result.degCoeff[i]=0;
+        }
+        for(int i = 0;i<capacity;i++){
+            for(int j = 0;j<p2.capacity;j++){
+                result.degCoeff[j+i]+=degCoeff[i]*p2.degCoeff[j];
+            }
+        }
+        return result;
+    }
+};
+
+int main() {
+    int count1, count2, choice;
+    cin >> count1;
+
+    int * degree1 = new int[count1];
+    int * coeff1 = new int[count1];
+
+    for (int i = 0; i < count1; i++) {
+        cin >> degree1[i];
+    }
+
+    for (int i = 0; i < count1; i++) {
+        cin >> coeff1[i];
+    }
+
+    Polynomial first;
+    for (int i = 0; i < count1; i++) {
+        first.setCoefficient(degree1[i], coeff1[i]);
+    }
+
+    cin >> count2;
+
+    int * degree2 = new int[count2];
+    int * coeff2 = new int[count2];
+
+    for (int i = 0; i < count2; i++) {
+        cin >> degree2[i];
+    }
+
+    for (int i = 0; i < count2; i++) {
+        cin >> coeff2[i];
+    }
+
+    Polynomial second;
+    for (int i = 0; i < count2; i++) {
+        second.setCoefficient(degree2[i], coeff2[i]);
+    }
+
+    cin >> choice;
+
+    Polynomial result;
+    switch (choice) {
+        // Add
+    case 1:
+        result = first + second;
+        result.print();
+        break;
+        // Subtract
+    case 2:
+        result = first - second;
+        result.print();
+        break;
+        // Multiply
+    case 3:
+        result = first * second;
+        result.print();
+        break;
+
+    case 4: // Copy constructor
+    {
+        Polynomial third(first);
+        if (third.degCoeff == first.degCoeff) {
+            cout << "false" << endl;
+        } else {
+            cout << "true" << endl;
+        }
+        break;
+    }
+
+    case 5: // Copy assignment operator
+    {
+        Polynomial fourth(first);
+        if (fourth.degCoeff == first.degCoeff) {
+            cout << "false" << endl;
+        } else {
+            cout << "true" << endl;
+        }
+        break;
+    }
+
+    }
+
+    return 0;
+}
+/*
+Sample Input 1 :
+3
+1 3 5
+1 2 -4
+4
+0 1 2 3
+4 2 -3 1
+1
+Sample Output 1 :
+4x0 3x1 -3x2 3x3 -4x5
+*/
+
+
+//FRACTION CLASS
+class Fraction {
+private:
+    long long int num;
+    long long int den;
+
+public:
+    Fraction(int n, int d){
+        num = n;
+        den = d;
+    }
+    void add(int n1, int d1){
+        if(den == d1){
+            num += n1;
+        }
+        else{
+            num = (num*d1) + (n1*den);            //numerator = (a*d) + (c*d)
+            den = (den*d1);                     //denominator = b*d
+        }
+    }
+    void multiply(int n1, int d1){
+        num *= n1;
+        den *= d1;
+    }
+    void print(){
+        int div = __gcd(num, den);              //getting already simplfied answer
+        cout<<num/div<<"/"<<den/div<<endl;
+    }
+
+};
+
+int main() {
+    int n, d;                     //n = numerator, d = denominator
+    cin>>n>>d;
+
+    Fraction f1(n, d);
+    int q;                        //query no. = 1 == add , 2 == multiply
+    cin>>q;
+
+    for(int i = 0 ; i < q ; i++){
+        int op, n1, d1;
+        cin>>op>>n1>>d1;
+        if(op == 1){
+            f1.add(n1, d1);
+            f1.print();
+        }
+        else{
+            f1.multiply(n1, d1);
+            f1.print();
+        }
+    }
+
+    return 0;
+}
+/*
+Sample Input 1:
+67 14
+1
+2 7 78
+Sample Output 1:
+67/156
+Explanation Of Sample Input 1:
+Fist fraction is 67/14 and no. of queries is 1. So now 
+in the next line 2 7 8 means type=2 which defines 
+multiplication and second fraction is 7/78 so 67/74 * 7/78=67/156.
+*/
+
+
+//PRINT NAME AND AGE (USING GETTER AND SETTER)
+class Person {
+private:
+    string name;
+    int age;
+
+public:
+    void setName(string newName){
+        name = newName;
+    }
+    string getName(){
+        return name;
+    }
+    void setAge(int newAge){
+        age = newAge;
+    }
+    int getAge(){
+        return age;
+    }
+};
+
+int main() {
+    Person p;
+
+    string name;
+    cin>>name;
+    int age;
+    cin>>age;
+
+    p.setName(name);
+    p.setAge(age);
+
+    cout<<"The name of the person is "<<p.getName()<<" and the age is "<<p.getAge()<<"."<<endl;
+
+    return 0;
+}
+/*
+Sample Input 1:
+Afzal
+67
+Sample Output 1:
+The name of the person is Afzal and the age is 67.
+*/
+
+
+//AREA OF RECTANGLE
+class Rectangle {
+public:
+    int length;
+    int breadth;
+    int getArea(){
+        return length * breadth;
+    }
+};
+/*
+Sample Input 1:
+4 20
+Sample Output 1:
+80
+*/
+
+
+//CAR CLASS
+class Car {
+    // Write your constructor and printCarInfo method here.
+public:
+    int n;
+    string c;
+    Car(int n, string c ){
+        this->n = n;
+        this->c = c;
+    }
+    void printCarInfo(){
+        cout<<"noOfGear: "<< n <<endl;
+        cout<<"color: "<< c<<endl;
+    }
+};
+
+
+class RaceCar: public Car {
+    // Write your constructor and printRaceCarInfo method here.
+public:
+    int s;
+    RaceCar(int n, string c, int s):Car(n,c){
+        this->s = s;
+    }
+    void printInfo(){
+        printCarInfo();
+        cout<<"maxSpeed: "<< s <<endl;
+    }
+};
+int main() {
+    int noOfGear, maxSpeed;
+    string color;
+    cin >> noOfGear >> color >> maxSpeed;
+    RaceCar raceCar(noOfGear, color, maxSpeed);
+    raceCar.printInfo();
+    return 0;
+}
+/*
+Sample Input 1:
+5
+red
+1000
+Sample Output 1:
+noOfGear: 5
+color: red
+maxSpeed: 1000
+Explanation Of Sample Output 1:
+When we call the printInfo function, all the info related to the car will be printed the same as the above format.
+*/
+
+
+//SHAPE AND OVERRIDING
+class Shape{
+public:
+    int l;
+    int b;
+};
+class Square : public Shape{
+public:
+    Square(int l){
+        this->l = l;
+    }
+    void area(){
+        cout<<"square"<<endl;
+        cout<< l * l<<endl;
+    }
+
+};
+class Rectangle : public Shape{
+public:
+    Rectangle(int l, int b){
+        this->l = l;
+        this->b = b;
+    }
+    void area(){
+        cout<<"rectangle"<<endl;
+        cout<< l * b;
+    }
+};
+int main() {
+
+    Square s(5);
+    s.area();
+
+    Rectangle r(5, 4);
+    r.area();
+
+    return 0;
+}
+/*
+Sample Output 1 :
+square
+25
+rectangle
+20
+Explanation Of Sample Output 1:
+Firstly we are creating the object of class Square with mentioned length 5 and calling the functions printMyType which output square and then calculateArea which returns 25 and hence printed. Similarly, it is done for the Rectangle class.
+*/
