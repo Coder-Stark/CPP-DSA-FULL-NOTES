@@ -486,6 +486,7 @@ Output: 3 9 0
 
 
 //CLONE A LINKED LIST WITH NEXT AND RANDOM POINTER (T.C = O(N) , S.C = O(N))
+//create clone list method
 class Solution
 {
     private:

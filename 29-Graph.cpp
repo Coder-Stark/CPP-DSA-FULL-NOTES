@@ -1003,16 +1003,10 @@ vector<vector<int>> findBridges(vector<vector<int>>& edges, int v, int e) {
 
     // Create all required data structures
     int timer = 0;
-    vector<int> disc(v);
-    vector<int> low(v);
+    vector<int> disc(v, -1);                        //discovery time
+    vector<int> low(v, -1);                         //earliest possible time
     int parent = -1;
     unordered_map<int, bool> visited;
-
-    // Initialise
-    for (int i = 0; i < v; i++) {
-        disc[i] = -1;
-        low[i] = -1;
-    }
 
     vector<vector<int>> result;
     // DFS call

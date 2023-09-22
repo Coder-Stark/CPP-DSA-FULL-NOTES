@@ -2616,6 +2616,7 @@ The first has a non-leaf node sum 36, and the second has non-leaf node sum 32.
 
 //BUY AND SELL STOCK PATTERN
 //BEST TIME TO BUY AND SELL STOCK  I                                                  {T.C = O(N), S.C = O(1)}
+//You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
@@ -2638,6 +2639,8 @@ Note that buying on day 2 and selling on day 1 is not allowed because you must b
 
 
 //BEST TIME TO BUY AND SELL STOCK II
+//On each day, you may decide to buy and/or sell the stock. You can only hold at most one share of 
+//the stock at any time. However, you can buy it then immediately sell it on the same day.
 //RECURSION
 class Solution {
 public:
@@ -2782,6 +2785,9 @@ Total profit is 4 + 3 = 7.
 
 
 //BEST TIME TO BUY AND SELL STOCK III
+/*Find the maximum profit you can achieve. You may complete at most two transactions.
+Note: You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).
+*/
 //RECURSION
 class Solution {
 public:
@@ -2932,6 +2938,10 @@ Then buy on day 7 (price = 1) and sell on day 8 (price = 4), profit = 4-1 = 3.
 
 
 //BEST TIME TO BUY AND SELL STOCK IV(same as above)
+/*You are given an integer array prices where prices[i] is the price of a given stock on the ith day, and an integer k.
+Find the maximum profit you can achieve. You may complete at most k transactions: i.e. you may buy at most k times and sell at most k times.
+Note: You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).
+*/
 //RECURSION
 class Solution {
 public:
@@ -3220,7 +3230,14 @@ Output: 2
 Explanation: Buy on day 1 (price = 2) and sell on day 2 (price = 4), profit = 4-2 = 2.
 */
 
+
 //BEST TIME TO BUY AND SELL STOCK V (same as II)                                                                    {T.C = O(N) , S.C = O(1)}
+/*You are given an array prices where prices[i] is the price of a given stock on the ith day, and an integer fee representing a transaction fee.
+Find the maximum profit you can achieve. You may complete as many transactions as you like, but you need to pay the transaction fee for each transaction.
+Note:
+You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).
+The transaction fee is only charged once for each stock purchase and sale.
+*/
 //SPACE OPTIMIZATION
 class Solution {
 public:

@@ -211,7 +211,7 @@ Enter the data : -1
 Enter data for insert right of 7
 Enter the data : -1
 Enter data for insert right of 3
-Enter the data : -11
+Enter the data : 11
 Enter data for insert left of 11
 Enter the data : -1
 Enter data for insert right of 11

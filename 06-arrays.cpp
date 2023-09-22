@@ -5,7 +5,7 @@
 using namespace std;
 
 
-//PRINT ARRAY 
+//01. PRINT ARRAY                                                                          {T.C = O(N), S.C = O(1)}
 int printArray(int arr[] , int n){
     for(int i = 0 ; i < n ; i++){
         cout<<arr[i]<<" ";
@@ -22,7 +22,7 @@ The array element are :
 */
 
 
-// MAX AND MIN ELEMENT IN ARRAY
+//02. MAX AND MIN ELEMENT IN ARRAY                                                          {T.C = O(N), S.C = O(1)}
 int getMax(int a[] , int n){
     // int max = INT_MIN;
     // for(int i = 0 ; i < n ; i++){
@@ -84,7 +84,7 @@ Minimum elemeent in array : -8
 */
 
 
-//SUM OF AN ARRAY ELEMENTS
+//03. SUM OF AN ARRAY ELEMENTS                                                               {T.C = O(N), S.C = O(1)}
 int ArraySum(int a[] , int n){
     int sum = 0;
     for(int i = 0 ; i < n ; i++){
@@ -116,7 +116,7 @@ Sum of array elements is : 28
 
 
 
-//LINEAR SEARCH
+//04. LINEAR SEARCH                                                                             {T.C = O(N), S.C = O(1)}
 bool LinearSearch(int a[] ,int n ,int key){
     for(int i = 0 ; i < n ; i++){
         if(a[i] == key){
@@ -166,7 +166,7 @@ key is present
 
 
 
-//REVERSE ARRAY ELEMENT
+//05. REVERSE ARRAY ELEMENT                                                                {T.C = O(N), S.C = O(1)}
 void Reverse(int a[] , int n){
     int start = 0;
     int end = n-1;
@@ -209,7 +209,7 @@ Reverse of array :
 
 
 
-//SWAP ALTERNATE
+//06. SWAP ALTERNATE                                                                  {T.C = O(N), S.C = O(1)}
 void swap(int a[] , int n){
     for(int i = 0 ; i < n ; i = i+2){
         if(a[i+1] < n){
@@ -248,11 +248,11 @@ Array after alternate swap
 
 
 
-//FIND UNIQUE ELEMENT IN ARRAY 
+//07. FIND UNIQUE ELEMENT IN ARRAY                                                            {T.C = O(N), S.C = O(1)}
 int FindUnique(int a[] , int n){
     int ans = 0;
 
-    //XOR all elements
+    //XOR all elements                                         //0^n == n && same no. xor = 0
     for(int i = 0 ; i < n ; i++){
         ans = ans^a[i];
     }
@@ -284,7 +284,7 @@ Unique no. is : 3
 
 
 
-//FIND DUPLICATE ELEMENT IN ARRAY 
+//08. FIND DUPLICATE ELEMENT IN ARRAY                                                    {T.C = O(N), S.C = O(1)}
 int FindDuplicate(int a[] , int n){
     int ans = 0;
     for(int i = 0 ; i < n ; i++){
@@ -321,7 +321,28 @@ Duplicate no. is : 4
 
 
 
-//ARRAY INTERSECTION
+//09. ARRAY INTERSECTION                                                                   {T.C = O(N), S.C = O(N)}
+vector<int> findArrayIntersection(vector<int> &arr1, int n, vector<int> &arr2, int m)
+{
+	int i = 0 ; 
+	int j = 0;
+	vector<int>ans;
+	while(i < n && j < m){
+		if(arr1[i] == arr2[j]){
+			ans.push_back(arr1[i]);
+			i++;
+			j++;
+		}
+		else if(arr1[i] < arr2[j]){
+			i++;
+		}
+		else{
+			j++;
+		}
+	}
+	return ans;
+}
+//same as above
 int findIntersection(int a[] , int b[] , int n , int m){
     int i = 0 , j = 0 , ans = 0;
     while(i < n && j < m){
@@ -330,7 +351,7 @@ int findIntersection(int a[] , int b[] , int n , int m){
             i++;
             j++;
         }
-        else if(a[i] > b[j]){
+        else if(a[i] < b[j]){
             i++;
         }
         else{
@@ -372,7 +393,7 @@ Find Intersection : 2 3 4
 
 
 
-//PAIR SUM
+//10. PAIR SUM                                                                                 {T.C = O(N^2), S.C = O(N)}
 vector<vector<int>> pairSum(vector<int> &arr, int s){
    vector<vector<int>>ans;
    for(int i = 0 ; i < arr.size() ; i++){
@@ -397,7 +418,9 @@ Sample Output 1:
 2 3
 */
 
-//TRIPLET SUM / 3SUM                                                    {T.C = O(N*LOGN), S.C = O(N)}
+/*-----------------------------------------------   BINARY SEARCH    -------------------------------------------------*/
+
+//11. TRIPLET SUM / 3SUM                                                    {T.C = O(N*LOGN), S.C = O(N)}
 vector<vector<int>> findTriplets(vector<int>& arr, int n, int K) {
     sort(arr.begin(), arr.end());
     vector<vector<int>> ans;
@@ -445,7 +468,25 @@ Sample Output 1:
 */
 
 
-//SORT 0'S AND 1'S
+//12. SORT 0'S AND 1'S                                                                    {T.C = O(N), S.C = O(1)}
+void sortZeroesAndOne(int arr[], int n)
+{
+    int left = 0;
+    int right = n-1;
+
+    while(left < right){
+      while(arr[left] == 0 && left < right){
+         left++;
+      }
+      while(arr[right] == 1 && left < right ){
+         right--;
+      }
+      swap(arr[left], arr[right]);
+      left++;
+      right--;
+    }
+}
+//same as above
 void SortOne(int a[] , int n){
     int left = 0;        //i , j = left  , right
     int right = n-1;
@@ -494,7 +535,7 @@ Sorted array of  0's and 1's is  :
 0 0 0 1 1
 */
 
-//BINARY SEARCH
+//13. BINARY SEARCH                                                                              {T.C = O(LOGN), S.C = O(1)}
 int BinarySearch(int a[] , int n , int key){
     int start = 0;
     int end = n-1;
@@ -546,7 +587,52 @@ key element is found at index : 5
 */
 
 
-//FIRST AND LAST POSITION OF ELEMENT IN SORTED ARRAY
+//14. FIRST AND LAST POSITION OF ELEMENT IN SORTED ARRAY                                                {T.C = O(LOGN), S.C = O(1)}
+int FirstOccurance(vector<int>&a , int n , int key){
+    int s = 0;
+    int e = n-1;
+    int mid = s + (e -s)/2;
+    int ans = -1;
+    while(s <= e){
+        if(a[mid] == key){
+            ans = mid;
+            e = mid - 1;
+        }
+        else if(a[mid] < key){
+            s = mid + 1;
+        }
+        else{
+            e = mid -1;
+        }
+        mid = s + (e - s)/2;
+    }
+    return ans;
+}
+int LastOccurance(vector<int>&a , int n , int key){
+    int s = 0;
+    int e = n-1;
+    int mid = s + (e -s)/2;
+    int ans = -1;
+    while(s <= e){
+        if(a[mid] == key){
+            ans = mid;
+            s = mid + 1;
+        }
+        else if(a[mid] < key){
+            s = mid + 1;
+        }
+        else{
+            e = mid -1;
+        }
+        mid = s + (e - s)/2;
+    }
+    return ans;
+}
+pair<int, int> firstAndLastPosition(vector<int>&a, int n, int key)
+{
+    return {FirstOccurance(a,n,key), LastOccurance(a, n,key)};
+}
+//same as above
 int FirstOccurance(int a[] , int n , int key){
     int s = 0;
     int e = n-1;
@@ -623,7 +709,26 @@ Total occurance of an element is : 5
 */
 
 
-//PEAK INDEX IN MOUNTAIN ARRAY
+//15. PEAK INDEX IN MOUNTAIN ARRAY                                                            {T.C = O(LOGN), S.C = O(1)}
+class Solution {
+public:
+    int peakIndexInMountainArray(vector<int>& arr) {
+        int s = 0;
+        int e = arr.size()-1;
+
+        while(s < e){
+            int mid = s + (e-s)/2;
+            if(arr[mid] < arr[mid+1]){     //first half
+                s = mid+1;
+            }else{
+                e = mid;                   //not (mid-1) mid can be skip
+            }     
+            mid = s + (e-s)/2;       
+        }
+        return s;
+    }
+};
+//same as above
 int PeakIndex(int a[] , int n){
     int s = 0;
     int e = n-1;
@@ -634,7 +739,7 @@ int PeakIndex(int a[] , int n){
             s = mid + 1;
         }
         else{
-            e = mid;
+            e = mid;                                               //if (mid-1) then peak element can be skip
         }
         mid = s + (e - s)/2;
     }
@@ -664,18 +769,18 @@ Peak Index in Mountain Array is : 3
 */
 
 
-//FIND PIVOT IN AN ARRAY
+//16. FIND PIVOT IN AN ARRAY
 int GetPivot(int a[] , int n){
     int s = 0; 
     int e = n-1;
     int mid = s + (e - s)/2;
 
     while(s < e){
-        if(a[mid] >= a[0]){
+        if(a[mid] >= a[0]){                                  //shows first line or fist half
             s = mid + 1;
         }
         else{
-            e = mid;
+            e = mid;                                         //not (mid-1)
         }
         mid = s + (e - s)/2;
     }
@@ -705,7 +810,51 @@ Pivot Index in Array is : 3
 */
 
 
-//SEARCH IN ROTATED SORTED ARRAY
+//17. SEARCH IN ROTATED SORTED ARRAY                                                                 {T.C = O(LOGN), S.C = O(1)}
+int GetPivot(vector<int>&a , int n){
+    int s = 0;
+    int e = n-1;
+    int mid = s + (e - s)/2;
+
+    while(s < e){
+        if(a[mid] >= a[0]){
+            s = mid + 1;
+        }
+        else{
+            e = mid;
+        }
+        mid = s + (e - s)/2;
+    }
+    return s;
+}
+int BinarySearch(vector<int>&a , int s , int e , int key){
+    int start = s;
+    int end = e;
+    int mid = start + (end - start)/2;
+    while(start <= end){
+        if(a[mid] == key){
+            return mid;
+        }
+        if(a[mid] < key){
+            start = mid + 1;
+        }
+        else{
+            end = mid - 1;
+        }
+        mid = start + (end - start)/2;
+    }
+    return -1;
+}
+int search(vector<int>&a , int n, int key){
+    int pivot = GetPivot(a , n);
+    if(key >= a[pivot] && key <= a[n-1]){
+        return BinarySearch(a , pivot , n-1 , key);
+    }
+    else{
+        return BinarySearch(a , 0 , pivot-1 , key );
+    }
+}
+//same as above
 int GetPivot(int a[] , int n){
     int s = 0;
     int e = n-1;
@@ -748,7 +897,6 @@ int FindPosition(int a[] , int n, int key){
     else{
         return BinarySearch(a , 0 , pivot-1 , key );
     }
-
 }
 int main(){
     int n; 
@@ -779,7 +927,33 @@ Search in Rotated Sorted Array is : 3
 */
 
 
-//SQUARE ROOT USING BINARY SEARCH (morePricise function use to find precise value )
+//18. SQUARE ROOT USING BINARY SEARCH (morePricise function use to find precise value )                        {T.C = O(LOGN), S.C = O(1)}
+class Solution {
+public:
+    int mySqrt(int n){
+        int s = 0;
+        int e = n;
+        long long int mid = s + (e - s)/2;
+        long long int ans = -1;
+
+        while(s <= e){
+            long long int square = mid * mid;
+            if(square == n){
+                return mid;
+            }
+            else if (square < n){
+                ans = mid;
+                s = mid + 1;
+            }
+            else{
+                e = mid - 1;
+            }
+            mid = s + (e - s)/2;
+        }
+        return ans;
+    }
+};
+//same as above
 long long int SqrtInteger(int n){
     int s = 0;
     int e = n;
@@ -836,7 +1010,7 @@ Very Precide Square root of n : 6.082
 */
 
 
-//BOOK ALLOCATION PROBLEM
+//19. BOOK ALLOCATION PROBLEM                                                       {T.C = O(N*LOGN), S.C = O(1)}
 //n = no. of books ,, m = no. of students
 /*Allocate the book to m students such that Maximum no. of pages assigned to a student is minimum value*/
 int isPossible(int a[] , int n , int m , int mid){
@@ -912,10 +1086,10 @@ minimum value : 60
 */
 
 
-//PAINTERS PARTITION PROBLEM
+//20. PAINTERS PARTITION PROBLEM
 
 
-//AGGRESIVE COW PROBLEM
+//21. AGGRESIVE COW PROBLEM                                                                   {T.C = O(N*LOGN), S.C = O(1)}
 //n = no. of stalls , k = aggressive cows
 //put the cow to the stall , such that the minimum distance between two of them is as large as possible,
 //Return largest minimum distance

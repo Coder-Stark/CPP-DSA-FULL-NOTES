@@ -244,29 +244,31 @@ Answer is : mavihS
 */
 
 //DELETE MIDDLE ELEMENT FROM STACK
-/*
-void solve(stack<int>&inputStack,int count , int size){
-   //base case
-   if(inputStack == size/2){
-      inputStack.pop();
-      return;
-   }
-
-   int num = inputStack.top();
-   inputStack.pop();
-
-   //recursive call
-   solve(inputStack , count+1 , N);
-   inputStack.push(num);
-}
-void deleteMiddle(stack<int>&inputStack,int count, int N){
-	
-   int count = 0;
-   solve(inputStack , n);
-   
-}
-*/
-/*OUTPUT(EXPECTED)
+class Solution
+{
+    public:
+    void solve(stack<int>&s,int count , int size){
+       //base case
+       if(count == size/2){
+          s.pop();
+          return;
+       }
+    
+       //if count is not in middle then it pop element and store the elements
+       int num = s.top();
+       s.pop();
+    
+       //recursive call
+       solve(s , count+1 , size);
+       s.push(num);                               //push back the store's element to stack
+    }
+    void deleteMid(stack<int>&s, int sizeOfStack)
+    {
+        int count = 0;
+        solve(s,count,sizeOfStack);
+    }
+};
+/*OUTPUT
 Sample Input 1:
 2
 4
@@ -718,16 +720,17 @@ class NStack
     int freespot;
 public:
     // Initialize your data structure.
+    //arr(actual arr), next(stores position) , freespot(store temp ans)
     NStack(int N, int S)
     {
-        n = N;
-        s = S;
+        n = N;         //no. of stacks
+        s = S;         //size of array
 
         arr = new int[s];
         top = new int[n];
         next = new int[s];
 
-        //top initialize
+        //top initialize with -1
         for(int i = 0 ; i < n ; i++){
             top[i] = -1;
         }
@@ -736,7 +739,6 @@ public:
         for(int i = 0 ; i < s; i++){
             next[i] = i+1;
         }
-
         //update last index value to -1
         next[s-1] = -1;
 
@@ -772,6 +774,7 @@ public:
     // Pops top element from Mth Stack. Returns -1 if the stack is empty, otherwise returns the popped element.
     int pop(int m)
     {
+        //reverse of push exactly
         //check underflow
         if(top[m-1] == -1){
             return -1;
@@ -790,11 +793,11 @@ public:
 };
 /*
 Sample Input 1 :
-3 6 5
-1 10 1
+3 6 5           query(1 == push, 2 == pop)
+1 10 1          //push(10, 1)    //push 10 in 1st stack
 1 20 1
 1 30 2
-2 1
+2 1             //pop(1)         //pop from 1st stack
 2 2
 Sample Output 1 :
 True 
@@ -806,25 +809,41 @@ True
 
 
 // DESIGN A STACK THAT SUPPORTS GETMIN() IN O(1) TIME AND O(1) EXTRA SPACE
+//BRUTE FORCE APPROACH                                                                                 {T.C = O(1), S.C = O(N)}
+/*
+push()
+input stack = normal push
+mini val = 2nd stack
+
+pop()
+pop from both stacks
+
+getmin
+return 2nd staack top*/
+
+//OPTIMISED APPROACH                                                                                  {T.C = O(1) , S.C = O(1)}
+//push (2*curr - mini)
+//pop  (2*mini - curr)
 class SpecialStack {
     // Define the data members.
     stack<int>s;
     int mini;
 
     public:
-    void push(int data) {
+    void push(int curr) {
+        //for first element
         if(s.empty()){
-            s.push(data);
-            mini = data;
+            s.push(curr);
+            mini = curr;
         }
         else{
-            if(data < mini){
-                int val = 2*data - mini;
+            if(curr < mini){
+                int val = 2*curr - mini;
                 s.push(val);
-                mini = data;
+                mini = curr;
             }
-            else{
-                s.push(data);
+            else{   //curr > mini
+                s.push(curr);          //normal push
             }
         }
     }
@@ -836,7 +855,7 @@ class SpecialStack {
         else{
             int curr = s.top();
             s.pop();
-            if(curr > mini){
+            if(curr > mini){           //normal pop
                 return curr;
             }
             else{
