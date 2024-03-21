@@ -130,10 +130,12 @@ Node* kReverse(Node* head, int k) {
     return prev;
 }
 /*
-//input
-1 2 3 4 5 6 
-//output
-5 4 3 7 9 2 
+Sample Input 1:
+6
+5 4 3 7 9 2
+4 
+Sample Output 1:
+7 3 4 5 9 2
 */
 
 
